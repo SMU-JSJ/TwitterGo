@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF7D59021A78877100EF25BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59011A78877100EF25BB /* main.m */; };
+		EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59041A78877100EF25BB /* AppDelegate.m */; };
+		EF7D59081A78877200EF25BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59071A78877200EF25BB /* ViewController.m */; };
+		EF7D590B1A78877200EF25BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF7D59091A78877200EF25BB /* Main.storyboard */; };
+		EF7D590D1A78877200EF25BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF7D590C1A78877200EF25BB /* Images.xcassets */; };
+		EF7D59101A78877200EF25BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF7D590E1A78877200EF25BB /* LaunchScreen.xib */; };
+		EF7D591C1A78877200EF25BB /* TwitterGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D591B1A78877200EF25BB /* TwitterGoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF7D59161A78877200EF25BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF7D58F41A78877100EF25BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF7D58FB1A78877100EF25BB;
+			remoteInfo = TwitterGo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF7D58FC1A78877100EF25BB /* TwitterGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF7D59001A78877100EF25BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF7D59011A78877100EF25BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EF7D59031A78877100EF25BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EF7D59041A78877100EF25BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EF7D59061A78877200EF25BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EF7D59071A78877200EF25BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EF7D590A1A78877200EF25BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF7D590C1A78877200EF25BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EF7D590F1A78877200EF25BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EF7D59151A78877200EF25BB /* TwitterGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF7D591A1A78877200EF25BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF7D591B1A78877200EF25BB /* TwitterGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterGoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF7D58F91A78877100EF25BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF7D59121A78877200EF25BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF7D58F31A78877100EF25BB = {
+			isa = PBXGroup;
+			children = (
+				EF7D58FE1A78877100EF25BB /* TwitterGo */,
+				EF7D59181A78877200EF25BB /* TwitterGoTests */,
+				EF7D58FD1A78877100EF25BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF7D58FD1A78877100EF25BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D58FC1A78877100EF25BB /* TwitterGo.app */,
+				EF7D59151A78877200EF25BB /* TwitterGoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF7D58FE1A78877100EF25BB /* TwitterGo */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D59031A78877100EF25BB /* AppDelegate.h */,
+				EF7D59041A78877100EF25BB /* AppDelegate.m */,
+				EF7D59061A78877200EF25BB /* ViewController.h */,
+				EF7D59071A78877200EF25BB /* ViewController.m */,
+				EF7D59091A78877200EF25BB /* Main.storyboard */,
+				EF7D590C1A78877200EF25BB /* Images.xcassets */,
+				EF7D590E1A78877200EF25BB /* LaunchScreen.xib */,
+				EF7D58FF1A78877100EF25BB /* Supporting Files */,
+			);
+			path = TwitterGo;
+			sourceTree = "<group>";
+		};
+		EF7D58FF1A78877100EF25BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D59001A78877100EF25BB /* Info.plist */,
+				EF7D59011A78877100EF25BB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EF7D59181A78877200EF25BB /* TwitterGoTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D591B1A78877200EF25BB /* TwitterGoTests.m */,
+				EF7D59191A78877200EF25BB /* Supporting Files */,
+			);
+			path = TwitterGoTests;
+			sourceTree = "<group>";
+		};
+		EF7D59191A78877200EF25BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D591A1A78877200EF25BB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF7D58FB1A78877100EF25BB /* TwitterGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF7D591F1A78877200EF25BB /* Build configuration list for PBXNativeTarget "TwitterGo" */;
+			buildPhases = (
+				EF7D58F81A78877100EF25BB /* Sources */,
+				EF7D58F91A78877100EF25BB /* Frameworks */,
+				EF7D58FA1A78877100EF25BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TwitterGo;
+			productName = TwitterGo;
+			productReference = EF7D58FC1A78877100EF25BB /* TwitterGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF7D59141A78877200EF25BB /* TwitterGoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF7D59221A78877200EF25BB /* Build configuration list for PBXNativeTarget "TwitterGoTests" */;
+			buildPhases = (
+				EF7D59111A78877200EF25BB /* Sources */,
+				EF7D59121A78877200EF25BB /* Frameworks */,
+				EF7D59131A78877200EF25BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF7D59171A78877200EF25BB /* PBXTargetDependency */,
+			);
+			name = TwitterGoTests;
+			productName = TwitterGoTests;
+			productReference = EF7D59151A78877200EF25BB /* TwitterGoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF7D58F41A78877100EF25BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = SMU;
+				TargetAttributes = {
+					EF7D58FB1A78877100EF25BB = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					EF7D59141A78877200EF25BB = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = EF7D58FB1A78877100EF25BB;
+					};
+				};
+			};
+			buildConfigurationList = EF7D58F71A78877100EF25BB /* Build configuration list for PBXProject "TwitterGo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF7D58F31A78877100EF25BB;
+			productRefGroup = EF7D58FD1A78877100EF25BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF7D58FB1A78877100EF25BB /* TwitterGo */,
+				EF7D59141A78877200EF25BB /* TwitterGoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF7D58FA1A78877100EF25BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF7D590B1A78877200EF25BB /* Main.storyboard in Resources */,
+				EF7D59101A78877200EF25BB /* LaunchScreen.xib in Resources */,
+				EF7D590D1A78877200EF25BB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF7D59131A78877200EF25BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF7D58F81A78877100EF25BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF7D59081A78877200EF25BB /* ViewController.m in Sources */,
+				EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */,
+				EF7D59021A78877100EF25BB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF7D59111A78877200EF25BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF7D591C1A78877200EF25BB /* TwitterGoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF7D59171A78877200EF25BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF7D58FB1A78877100EF25BB /* TwitterGo */;
+			targetProxy = EF7D59161A78877200EF25BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF7D59091A78877200EF25BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF7D590A1A78877200EF25BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EF7D590E1A78877200EF25BB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF7D590F1A78877200EF25BB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF7D591D1A78877200EF25BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EF7D591E1A78877200EF25BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF7D59201A78877200EF25BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwitterGo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EF7D59211A78877200EF25BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwitterGo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EF7D59231A78877200EF25BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TwitterGoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterGo.app/TwitterGo";
+			};
+			name = Debug;
+		};
+		EF7D59241A78877200EF25BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TwitterGoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterGo.app/TwitterGo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF7D58F71A78877100EF25BB /* Build configuration list for PBXProject "TwitterGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF7D591D1A78877200EF25BB /* Debug */,
+				EF7D591E1A78877200EF25BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF7D591F1A78877200EF25BB /* Build configuration list for PBXNativeTarget "TwitterGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF7D59201A78877200EF25BB /* Debug */,
+				EF7D59211A78877200EF25BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF7D59221A78877200EF25BB /* Build configuration list for PBXNativeTarget "TwitterGoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF7D59231A78877200EF25BB /* Debug */,
+				EF7D59241A78877200EF25BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF7D58F41A78877100EF25BB /* Project object */;
+}
