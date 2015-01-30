@@ -7,16 +7,28 @@
 //
 
 #import "ViewController.h"
+#import "TweetModel.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) TweetModel* tweetModel;
 
 @end
 
 @implementation ViewController
 
+-(TweetModel*) tweetModel{
+    if(!_tweetModel)
+        _tweetModel = [TweetModel sharedInstance];
+    
+    return _tweetModel;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.tweetModel loadAllTweets];
 }
 
 - (void)didReceiveMemoryWarning {

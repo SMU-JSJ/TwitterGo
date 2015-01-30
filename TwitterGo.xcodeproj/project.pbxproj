@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF79826C1A7B16B80061DFA5 /* TweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79826B1A7B16B80061DFA5 /* TweetModel.m */; };
+		EF79826F1A7B17110061DFA5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79826E1A7B17110061DFA5 /* Tweet.m */; };
 		EF7D59021A78877100EF25BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59011A78877100EF25BB /* main.m */; };
 		EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59041A78877100EF25BB /* AppDelegate.m */; };
 		EF7D59081A78877200EF25BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59071A78877200EF25BB /* ViewController.m */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF79826A1A7B16B80061DFA5 /* TweetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetModel.h; sourceTree = "<group>"; };
+		EF79826B1A7B16B80061DFA5 /* TweetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetModel.m; sourceTree = "<group>"; };
+		EF79826D1A7B17110061DFA5 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		EF79826E1A7B17110061DFA5 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		EF7D58FC1A78877100EF25BB /* TwitterGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7D59001A78877100EF25BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7D59011A78877100EF25BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +92,10 @@
 				EF7D59061A78877200EF25BB /* ViewController.h */,
 				EF7D59071A78877200EF25BB /* ViewController.m */,
 				EF7D59091A78877200EF25BB /* Main.storyboard */,
+				EF79826A1A7B16B80061DFA5 /* TweetModel.h */,
+				EF79826D1A7B17110061DFA5 /* Tweet.h */,
+				EF79826E1A7B17110061DFA5 /* Tweet.m */,
+				EF79826B1A7B16B80061DFA5 /* TweetModel.m */,
 				EF7D590C1A78877200EF25BB /* Images.xcassets */,
 				EF7D590E1A78877200EF25BB /* LaunchScreen.xib */,
 				EF7D58FF1A78877100EF25BB /* Supporting Files */,
@@ -220,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF7D59081A78877200EF25BB /* ViewController.m in Sources */,
+				EF79826C1A7B16B80061DFA5 /* TweetModel.m in Sources */,
+				EF79826F1A7B17110061DFA5 /* Tweet.m in Sources */,
 				EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */,
 				EF7D59021A78877100EF25BB /* main.m in Sources */,
 			);
@@ -412,6 +424,7 @@
 				EF7D59211A78877200EF25BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF7D59221A78877200EF25BB /* Build configuration list for PBXNativeTarget "TwitterGoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +433,7 @@
 				EF7D59241A78877200EF25BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
