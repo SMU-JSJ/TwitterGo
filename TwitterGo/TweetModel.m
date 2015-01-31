@@ -45,7 +45,16 @@
         NSNumber* favorites = [status objectForKey:@"favorite_count"];
         NSString* date = [[status objectForKey:@"created_at"] componentsSeparatedByString:@"+"][0];
         NSString* location = [status valueForKeyPath:@"user.location"];
-        NSURL* pictureUrl = [[[status valueForKeyPath:@"entities.media"] firstObject] objectForKey:@"media_url"];
+        
+        NSString* imageURLString = [[[status valueForKeyPath:@"entities.media"] firstObject] objectForKey:@"media_url"];
+        
+        NSURL* imageURL = nil;
+        if (imageURLString) {
+            imageURL = [NSURL URLWithString:[ NSString stringWithFormat: @"%@:thumb", imageURLString] ];
+        } else {
+#warning FIX THIS
+            imageURL = [NSURL URLWithString:@"http://pbs.twimg.com/media/B8jg5QfIcAAbDjn.jpg:thumb"];
+        }
         
         Tweet* tweet = [[Tweet alloc] initTweet:author
                                         message:message
@@ -53,7 +62,7 @@
                                       favorites:favorites
                                            date:date
                                        location:location
-                                     pictureUrl:pictureUrl];
+                                       imageURL:imageURL];
         
         [self.tweets addObject:tweet];
     }

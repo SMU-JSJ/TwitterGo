@@ -17,7 +17,7 @@
       favorites:(NSNumber*) favorites
            date:(NSString*) date
        location:(NSString*) location
-     pictureUrl:(NSURL*) pictureUrl;
+       imageURL:(NSURL*) imageURL;
 
 @property (strong, nonatomic) NSString* author;
 @property (strong, nonatomic) NSString* message;
@@ -25,7 +25,6 @@
 @property (strong, nonatomic) NSNumber* favorites;
 @property (strong, nonatomic) NSString* date;
 @property (strong, nonatomic) NSString* location;
-@property (strong, nonatomic) NSURL* pictureUrl;
-@property (strong, nonatomic) UIImage* picture;
+@property (strong, nonatomic) NSURL* imageURL;
 
 @end

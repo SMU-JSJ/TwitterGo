@@ -139,8 +139,8 @@
                                             <color key="highlightedColor" red="0.69962211279999997" green="0.69962211279999997" blue="0.69962211279999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="waa-gb-Duq"/>
                                                     <exclude reference="1fG-Fe-RzQ"/>
+                                                    <exclude reference="waa-gb-Duq"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -211,8 +211,8 @@
                                             <color key="highlightedColor" red="0.69962211279999997" green="0.69962211279999997" blue="0.69962211279999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Yyf-Ff-VFt"/>
                                                     <exclude reference="EBv-Qk-QBp"/>
+                                                    <exclude reference="Yyf-Ff-VFt"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -316,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="2611.5" y="453.5"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Image CollectionVC-->
         <scene sceneID="gVz-Yn-KNw">
             <objects>
-                <collectionViewController id="YDf-of-rv1" sceneMemberID="viewController">
+                <collectionViewController id="YDf-of-rv1" customClass="ImageCollectionVC" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ezL-9P-3qf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,13 +331,16 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TweetImageCell" id="i2a-Zs-t2I">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TweetImageCell" id="i2a-Zs-t2I" customClass="ImageCollectionViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2Kv-2n-bOr">
+                                            <rect key="frame" x="40" y="40" width="20" height="20"/>
+                                        </activityIndicatorView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-mB-I8D">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
@@ -349,8 +352,12 @@
                                     <constraint firstAttribute="bottom" secondItem="YHJ-mB-I8D" secondAttribute="bottom" id="Maj-eG-4Tq"/>
                                     <constraint firstItem="YHJ-mB-I8D" firstAttribute="leading" secondItem="i2a-Zs-t2I" secondAttribute="leading" id="jvN-Vg-uzM"/>
                                     <constraint firstAttribute="trailing" secondItem="YHJ-mB-I8D" secondAttribute="trailing" id="mST-bg-qcL"/>
+                                    <constraint firstAttribute="centerY" secondItem="2Kv-2n-bOr" secondAttribute="centerY" id="mYG-Vz-b3t"/>
+                                    <constraint firstAttribute="centerX" secondItem="2Kv-2n-bOr" secondAttribute="centerX" id="p72-F1-Bzm"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="imageView" destination="YHJ-mB-I8D" id="QEn-pd-jJW"/>
+                                    <outlet property="indicator" destination="2Kv-2n-bOr" id="C2W-UZ-D0D"/>
                                     <segue destination="oti-17-NOK" kind="show" id="YWk-8m-toY"/>
                                 </connections>
                             </collectionViewCell>
@@ -360,11 +367,7 @@
                             <outlet property="delegate" destination="YDf-of-rv1" id="rhf-cY-ArJ"/>
                         </connections>
                     </collectionView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="YGi-UH-D2L"/>
-                        <barButtonItem title="Item" id="LmN-EA-EXo"/>
-                        <barButtonItem title="Item" id="rhe-wE-pUf"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="UbF-P7-Ap2">
                         <barButtonItem key="leftBarButtonItem" title="#hashtag ▾" id="GPq-UM-THS">
                             <connections>
@@ -379,6 +382,9 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ezL-9P-3qf" id="nGB-7R-VqB"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4v-St-OEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -532,11 +538,11 @@
             </objects>
             <point key="canvasLocation" x="2611.5" y="1353.5"/>
         </scene>
-        <!--Item-->
+        <!--Tweets-->
         <scene sceneID="mRJ-Rn-wVu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yin-7X-LMU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PR8-SU-2S6"/>
+                    <tabBarItem key="tabBarItem" title="Tweets" id="TPo-CP-Y1e"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r31-EL-9A5">
@@ -590,11 +596,11 @@
             </objects>
             <point key="canvasLocation" x="1934.5" y="1357.5"/>
         </scene>
-        <!--Item-->
+        <!--Images-->
         <scene sceneID="OWq-zP-YFu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kto-SF-qcv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="App-HQ-vUe"/>
+                    <tabBarItem key="tabBarItem" title="Images" id="Z9j-9j-g2a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pkm-nl-pUM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -635,7 +641,7 @@
         <image name="turtle" width="1172" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E3I-FZ-gRa"/>
-        <segue reference="RZC-AU-X4e"/>
+        <segue reference="IpV-ir-8ve"/>
+        <segue reference="yz0-Tl-isD"/>
     </inferredMetricsTieBreakers>
 </document>

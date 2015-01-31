@@ -75,6 +75,7 @@
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    [self.tweetModel.tweets removeAllObjects];
     [self getTwitterJSON];
     
     // Uncomment the following line to preserve selection between presentations.
