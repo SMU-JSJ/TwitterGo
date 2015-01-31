@@ -7,16 +7,16 @@
 //
 
 #import "TweetModel.h"
+#import "Tweet.h"
 
 @interface TweetModel()
 
-@property (strong, nonatomic) NSMutableArray* tweets;
 
 @end
 
 @implementation TweetModel
 
-+(TweetModel*) sharedInstance {
++ (TweetModel*) sharedInstance {
     static TweetModel * _sharedInstance = nil;
     
     static dispatch_once_t oncePredicate;
@@ -28,27 +28,35 @@
     return _sharedInstance;
 }
 
--(void) loadAllTweets {
-    NSNumber* numberOfTweets = @10;
-    NSString* trend = @"%23firstworldproblems";
-    NSString* type = @"popular";
-    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&result_type=%@&count=%@", trend, type, numberOfTweets];
+
+-(NSMutableArray*) tweets{
+    if(!_tweets)
+        _tweets = [[NSMutableArray alloc] init];
     
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
-            completionHandler:^(NSData *data,
-                                NSURLResponse *response,
-                                NSError *error) {
-                NSError* otherError;
-                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
-                
-                NSLog(@"JSON: %@", json);
-                
-            }] resume];
+    return _tweets;
+}
+
+- (void) addAllTweets:(NSDictionary*)json {
+    NSArray* statuses = [json objectForKey:@"statuses"];
+    for (NSDictionary* status in statuses) {
+        NSString* author = [NSString stringWithFormat: @"@%@",[status valueForKeyPath:@"user.screen_name"]];
+        NSString* message = [status objectForKey:@"text"];
+        NSNumber* retweets = [status objectForKey:@"retweet_count"];
+        NSNumber* favorites = [status objectForKey:@"favorite_count"];
+        NSString* date = [[status objectForKey:@"created_at"] componentsSeparatedByString:@"+"][0];
+        NSString* location = [status valueForKeyPath:@"user.location"];
+        NSURL* pictureUrl = [[[status valueForKeyPath:@"entities.media"] firstObject] objectForKey:@"media_url"];
+        
+        Tweet* tweet = [[Tweet alloc] initTweet:author
+                                        message:message
+                                       retweets:retweets
+                                      favorites:favorites
+                                           date:date
+                                       location:location
+                                     pictureUrl:pictureUrl];
+        
+        [self.tweets addObject:tweet];
+    }
 }
 
 @end

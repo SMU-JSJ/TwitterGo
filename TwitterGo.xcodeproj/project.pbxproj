@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		EF79826C1A7B16B80061DFA5 /* TweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79826B1A7B16B80061DFA5 /* TweetModel.m */; };
 		EF79826F1A7B17110061DFA5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79826E1A7B17110061DFA5 /* Tweet.m */; };
+		EF7982721A7C591C0061DFA5 /* TweetTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982711A7C591C0061DFA5 /* TweetTableVC.m */; };
+		EF7982751A7C637F0061DFA5 /* PopularTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982741A7C637F0061DFA5 /* PopularTableViewCell.m */; };
+		EF7982781A7C81C50061DFA5 /* RecentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982771A7C81C50061DFA5 /* RecentTableViewCell.m */; };
+		EF79827B1A7C855A0061DFA5 /* MixedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79827A1A7C855A0061DFA5 /* MixedTableViewCell.m */; };
 		EF7D59021A78877100EF25BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59011A78877100EF25BB /* main.m */; };
 		EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59041A78877100EF25BB /* AppDelegate.m */; };
-		EF7D59081A78877200EF25BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59071A78877200EF25BB /* ViewController.m */; };
 		EF7D590B1A78877200EF25BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF7D59091A78877200EF25BB /* Main.storyboard */; };
 		EF7D590D1A78877200EF25BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF7D590C1A78877200EF25BB /* Images.xcassets */; };
 		EF7D59101A78877200EF25BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF7D590E1A78877200EF25BB /* LaunchScreen.xib */; };
@@ -33,13 +36,19 @@
 		EF79826B1A7B16B80061DFA5 /* TweetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetModel.m; sourceTree = "<group>"; };
 		EF79826D1A7B17110061DFA5 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		EF79826E1A7B17110061DFA5 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		EF7982701A7C591C0061DFA5 /* TweetTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTableVC.h; sourceTree = "<group>"; };
+		EF7982711A7C591C0061DFA5 /* TweetTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTableVC.m; sourceTree = "<group>"; };
+		EF7982731A7C637F0061DFA5 /* PopularTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularTableViewCell.h; sourceTree = "<group>"; };
+		EF7982741A7C637F0061DFA5 /* PopularTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularTableViewCell.m; sourceTree = "<group>"; };
+		EF7982761A7C81C50061DFA5 /* RecentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewCell.h; sourceTree = "<group>"; };
+		EF7982771A7C81C50061DFA5 /* RecentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewCell.m; sourceTree = "<group>"; };
+		EF7982791A7C855A0061DFA5 /* MixedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedTableViewCell.h; sourceTree = "<group>"; };
+		EF79827A1A7C855A0061DFA5 /* MixedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedTableViewCell.m; sourceTree = "<group>"; };
 		EF7D58FC1A78877100EF25BB /* TwitterGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7D59001A78877100EF25BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7D59011A78877100EF25BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EF7D59031A78877100EF25BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EF7D59041A78877100EF25BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EF7D59061A78877200EF25BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EF7D59071A78877200EF25BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EF7D590A1A78877200EF25BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF7D590C1A78877200EF25BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EF7D590F1A78877200EF25BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -89,13 +98,19 @@
 			children = (
 				EF7D59031A78877100EF25BB /* AppDelegate.h */,
 				EF7D59041A78877100EF25BB /* AppDelegate.m */,
-				EF7D59061A78877200EF25BB /* ViewController.h */,
-				EF7D59071A78877200EF25BB /* ViewController.m */,
 				EF7D59091A78877200EF25BB /* Main.storyboard */,
+				EF7982731A7C637F0061DFA5 /* PopularTableViewCell.h */,
+				EF7982741A7C637F0061DFA5 /* PopularTableViewCell.m */,
+				EF7982761A7C81C50061DFA5 /* RecentTableViewCell.h */,
+				EF7982771A7C81C50061DFA5 /* RecentTableViewCell.m */,
 				EF79826A1A7B16B80061DFA5 /* TweetModel.h */,
+				EF79826B1A7B16B80061DFA5 /* TweetModel.m */,
+				EF7982791A7C855A0061DFA5 /* MixedTableViewCell.h */,
+				EF79827A1A7C855A0061DFA5 /* MixedTableViewCell.m */,
 				EF79826D1A7B17110061DFA5 /* Tweet.h */,
 				EF79826E1A7B17110061DFA5 /* Tweet.m */,
-				EF79826B1A7B16B80061DFA5 /* TweetModel.m */,
+				EF7982701A7C591C0061DFA5 /* TweetTableVC.h */,
+				EF7982711A7C591C0061DFA5 /* TweetTableVC.m */,
 				EF7D590C1A78877200EF25BB /* Images.xcassets */,
 				EF7D590E1A78877200EF25BB /* LaunchScreen.xib */,
 				EF7D58FF1A78877100EF25BB /* Supporting Files */,
@@ -229,11 +244,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF7D59081A78877200EF25BB /* ViewController.m in Sources */,
+				EF7982781A7C81C50061DFA5 /* RecentTableViewCell.m in Sources */,
+				EF79827B1A7C855A0061DFA5 /* MixedTableViewCell.m in Sources */,
 				EF79826C1A7B16B80061DFA5 /* TweetModel.m in Sources */,
+				EF7982751A7C637F0061DFA5 /* PopularTableViewCell.m in Sources */,
 				EF79826F1A7B17110061DFA5 /* Tweet.m in Sources */,
 				EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */,
 				EF7D59021A78877100EF25BB /* main.m in Sources */,
+				EF7982721A7C591C0061DFA5 /* TweetTableVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

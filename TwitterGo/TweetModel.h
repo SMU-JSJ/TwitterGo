@@ -10,8 +10,10 @@
 
 @interface TweetModel : NSObject
 
+@property (strong, nonatomic) NSMutableArray* tweets;
+
 +(TweetModel*) sharedInstance;
 
--(void) loadAllTweets;
+-(void) addAllTweets:(NSDictionary*)json;
 
 @end

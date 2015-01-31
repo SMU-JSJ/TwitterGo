@@ -16,7 +16,7 @@
       favorites:(NSNumber*) favorites
            date:(NSString*) date
        location:(NSString*) location
-        picture:(UIImage*) picture
+        pictureUrl:(NSURL*) pictureUrl
 {
     self = [super init];
     
@@ -27,7 +27,7 @@
         self.favorites = favorites;
         self.date = date;
         self.location = location;
-        self.picture = picture;
+        self.pictureUrl = pictureUrl;
     }
     
     return self;
