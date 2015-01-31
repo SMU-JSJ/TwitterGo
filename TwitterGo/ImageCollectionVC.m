@@ -10,6 +10,7 @@
 #import "TweetModel.h"
 #import "Tweet.h"
 #import "ImageCollectionViewCell.h"
+#import "ImageVC.h"
 
 @interface ImageCollectionVC ()
 
@@ -91,15 +92,59 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    BOOL isVC = [[segue destinationViewController] isKindOfClass:[ImageVC class]];
+    
+    if(isVC){
+        ImageCollectionViewCell* cell = (ImageCollectionViewCell*) sender;
+        ImageVC* vc = [segue destinationViewController];
+        
+        // Pass the selected object to the new view controller.
+        Tweet* tweet = (Tweet*)self.tweetModel.tweets[[self.collectionView indexPathForCell: cell].row];
+        vc.imageURL = tweet.imageURL;
+    } else if ([segue.identifier isEqualToString:@"TrendPicker"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        TrendVC *trendVC = [navigationController viewControllers][0];
+        trendVC.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"Settings"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        SettingsTableVC *settingsTableVC = [navigationController viewControllers][0];
+        settingsTableVC.delegate = self;
+    }
+    
+    
+    
 }
-*/
+
+#pragma mark - TrendVCDelegate
+
+- (void)trendVCDidCancel:(TrendVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)trendVCDidSave:(TrendVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - SettingsTableVCDelegate
+
+- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)settingsTableVCDidSave:(SettingsTableVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -116,9 +161,13 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     Tweet* tweet = (Tweet*)self.tweetModel.tweets[indexPath.row];
-    //NSLog(@"%@", tweet.imageURL);
-    cell.imageURL = tweet.imageURL;
-    //cell.test = @"asdf";
+
+    
+    NSURL* imageURL = nil;
+    if (tweet.imageURL) {
+        imageURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@:thumb", tweet.imageURL]];
+    }
+    cell.imageURL = imageURL;
     
     return cell;
 }

@@ -15,6 +15,9 @@
 		EF79827B1A7C855A0061DFA5 /* MixedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79827A1A7C855A0061DFA5 /* MixedTableViewCell.m */; };
 		EF79827E1A7C887A0061DFA5 /* ImageCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF79827D1A7C887A0061DFA5 /* ImageCollectionVC.m */; };
 		EF7982811A7C89260061DFA5 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982801A7C89260061DFA5 /* ImageCollectionViewCell.m */; };
+		EF7982841A7D72530061DFA5 /* ImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982831A7D72530061DFA5 /* ImageVC.m */; };
+		EF7982871A7D7E4A0061DFA5 /* TrendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982861A7D7E4A0061DFA5 /* TrendVC.m */; };
+		EF79828A1A7D83310061DFA5 /* SettingsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7982891A7D83310061DFA5 /* SettingsTableVC.m */; };
 		EF7D59021A78877100EF25BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59011A78877100EF25BB /* main.m */; };
 		EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D59041A78877100EF25BB /* AppDelegate.m */; };
 		EF7D590B1A78877200EF25BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF7D59091A78877200EF25BB /* Main.storyboard */; };
@@ -50,6 +53,12 @@
 		EF79827D1A7C887A0061DFA5 /* ImageCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionVC.m; sourceTree = "<group>"; };
 		EF79827F1A7C89260061DFA5 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
 		EF7982801A7C89260061DFA5 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		EF7982821A7D72530061DFA5 /* ImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageVC.h; sourceTree = "<group>"; };
+		EF7982831A7D72530061DFA5 /* ImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageVC.m; sourceTree = "<group>"; };
+		EF7982851A7D7E4A0061DFA5 /* TrendVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendVC.h; sourceTree = "<group>"; };
+		EF7982861A7D7E4A0061DFA5 /* TrendVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendVC.m; sourceTree = "<group>"; };
+		EF7982881A7D83310061DFA5 /* SettingsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableVC.h; sourceTree = "<group>"; };
+		EF7982891A7D83310061DFA5 /* SettingsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableVC.m; sourceTree = "<group>"; };
 		EF7D58FC1A78877100EF25BB /* TwitterGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7D59001A78877100EF25BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7D59011A78877100EF25BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -104,9 +113,15 @@
 			children = (
 				EF7D59031A78877100EF25BB /* AppDelegate.h */,
 				EF7D59041A78877100EF25BB /* AppDelegate.m */,
+				EF7982881A7D83310061DFA5 /* SettingsTableVC.h */,
+				EF7982891A7D83310061DFA5 /* SettingsTableVC.m */,
 				EF7D59091A78877200EF25BB /* Main.storyboard */,
+				EF7982851A7D7E4A0061DFA5 /* TrendVC.h */,
+				EF7982861A7D7E4A0061DFA5 /* TrendVC.m */,
 				EF79827F1A7C89260061DFA5 /* ImageCollectionViewCell.h */,
 				EF7982801A7C89260061DFA5 /* ImageCollectionViewCell.m */,
+				EF7982821A7D72530061DFA5 /* ImageVC.h */,
+				EF7982831A7D72530061DFA5 /* ImageVC.m */,
 				EF7982731A7C637F0061DFA5 /* PopularTableViewCell.h */,
 				EF7982741A7C637F0061DFA5 /* PopularTableViewCell.m */,
 				EF7982761A7C81C50061DFA5 /* RecentTableViewCell.h */,
@@ -255,10 +270,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF7982781A7C81C50061DFA5 /* RecentTableViewCell.m in Sources */,
+				EF7982841A7D72530061DFA5 /* ImageVC.m in Sources */,
 				EF79827B1A7C855A0061DFA5 /* MixedTableViewCell.m in Sources */,
 				EF7982811A7C89260061DFA5 /* ImageCollectionViewCell.m in Sources */,
 				EF79826C1A7B16B80061DFA5 /* TweetModel.m in Sources */,
+				EF79828A1A7D83310061DFA5 /* SettingsTableVC.m in Sources */,
 				EF7982751A7C637F0061DFA5 /* PopularTableViewCell.m in Sources */,
+				EF7982871A7D7E4A0061DFA5 /* TrendVC.m in Sources */,
 				EF79826F1A7B17110061DFA5 /* Tweet.m in Sources */,
 				EF7D59051A78877100EF25BB /* AppDelegate.m in Sources */,
 				EF79827E1A7C887A0061DFA5 /* ImageCollectionVC.m in Sources */,

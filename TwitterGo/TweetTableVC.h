@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrendVC.h"
+#import "SettingsTableVC.h"
 
-@interface TweetTableVC : UITableViewController
+@interface TweetTableVC : UITableViewController <TrendVCDelegate, SettingsTableVCDelegate>
 
 -(void) getTwitterJSON;
 

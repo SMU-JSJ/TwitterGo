@@ -114,6 +114,30 @@
             }] resume];
 }
 
+#pragma mark - TrendVCDelegate
+
+- (void)trendVCDidCancel:(TrendVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)trendVCDidSave:(TrendVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - SettingsTableVCDelegate
+
+- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)settingsTableVCDidSave:(SettingsTableVC *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -203,14 +227,24 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"TrendPicker"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        TrendVC *trendVC = [navigationController viewControllers][0];
+        trendVC.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"Settings"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        SettingsTableVC *settingsTableVC = [navigationController viewControllers][0];
+        settingsTableVC.delegate = self;
+    }
 }
-*/
 
 @end

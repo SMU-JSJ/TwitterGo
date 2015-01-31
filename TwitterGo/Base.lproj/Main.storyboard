@@ -36,7 +36,7 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularCell" rowHeight="120" id="YYO-cB-vzZ" customClass="PopularTableViewCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularCell" rowHeight="120" id="YYO-cB-vzZ" customClass="PopularTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="YYO-cB-vzZ" id="aTS-70-9wo">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -74,7 +74,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" red="0.69962211279999997" green="0.69962211279999997" blue="0.69962211279999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="uqm-Zj-alf">
                                             <rect key="frame" x="299" y="5" width="20" height="20"/>
@@ -84,7 +84,7 @@
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="m5s-sW-avX">
-                                            <rect key="frame" x="217" y="5" width="20" height="20"/>
+                                            <rect key="frame" x="217" y="6" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="OAs-Dy-F4E"/>
                                                 <constraint firstAttribute="width" constant="20" id="Quf-WH-LDV"/>
@@ -93,7 +93,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="DnC-Yf-NRj" firstAttribute="top" secondItem="RqY-Vk-8Mn" secondAttribute="bottom" constant="8" id="2PW-wg-ce4"/>
-                                        <constraint firstItem="m5s-sW-avX" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" constant="-3" id="5kA-Uh-Ppp"/>
+                                        <constraint firstItem="m5s-sW-avX" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" constant="-2" id="5kA-Uh-Ppp"/>
                                         <constraint firstItem="DyG-gO-QxM" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" id="6hh-5u-237"/>
                                         <constraint firstItem="RqY-Vk-8Mn" firstAttribute="leading" secondItem="aTS-70-9wo" secondAttribute="leadingMargin" id="BBF-F1-lHP"/>
                                         <constraint firstItem="RqY-Vk-8Mn" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" id="I8Z-Y2-hoz"/>
@@ -123,7 +123,7 @@
                                     <outlet property="retweets" destination="igi-d0-V5M" id="8FY-PL-5Mr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentCell" rowHeight="120" id="pNP-i1-Eza" customClass="RecentTableViewCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentCell" rowHeight="120" id="pNP-i1-Eza" customClass="RecentTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="pNP-i1-Eza" id="h2p-VW-MJh">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -186,7 +186,7 @@
                                     <outlet property="message" destination="H6i-1J-9qt" id="8Jk-BP-QcM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MixedCell" rowHeight="120" id="bDh-4G-Wfg" customClass="MixedTableViewCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MixedCell" rowHeight="120" id="bDh-4G-Wfg" customClass="MixedTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="bDh-4G-Wfg" id="Y1P-Cq-wdC">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -260,12 +260,12 @@
                     <navigationItem key="navigationItem" id="Wkr-kc-Cvo">
                         <barButtonItem key="leftBarButtonItem" title="#hashtag ▾" id="3ds-v4-ElG">
                             <connections>
-                                <segue destination="A7z-cP-d2H" kind="presentation" id="E3I-FZ-gRa"/>
+                                <segue destination="A7z-cP-d2H" kind="presentation" identifier="TrendPicker" id="E3I-FZ-gRa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Wjr-4a-g9x">
                             <connections>
-                                <segue destination="VwC-hv-DLP" kind="presentation" id="RZC-AU-X4e"/>
+                                <segue destination="VwC-hv-DLP" kind="presentation" identifier="Settings" id="RZC-AU-X4e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -285,7 +285,7 @@
         <!--Trends-->
         <scene sceneID="90R-cK-1Ie">
             <objects>
-                <viewController id="8pj-im-1if" sceneMemberID="viewController">
+                <viewController id="8pj-im-1if" customClass="TrendVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IC2-wi-MjX"/>
                         <viewControllerLayoutGuide type="bottom" id="tSM-f2-4FM"/>
@@ -307,10 +307,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trends" id="dFZ-au-fXt">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="lpT-1P-0nc"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="fsP-z1-iiq"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lpT-1P-0nc">
+                            <connections>
+                                <action selector="cancel:" destination="8pj-im-1if" id="VVe-H2-Pu2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="fsP-z1-iiq">
+                            <connections>
+                                <action selector="done:" destination="8pj-im-1if" id="Aom-lV-eNg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="picker" destination="y92-zR-Hht" id="vWh-1y-E0x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97T-rR-R7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,12 +382,12 @@
                     <navigationItem key="navigationItem" id="UbF-P7-Ap2">
                         <barButtonItem key="leftBarButtonItem" title="#hashtag ▾" id="GPq-UM-THS">
                             <connections>
-                                <segue destination="A7z-cP-d2H" kind="presentation" id="IpV-ir-8ve"/>
+                                <segue destination="A7z-cP-d2H" kind="presentation" identifier="TrendPicker" id="IpV-ir-8ve"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="oHZ-dZ-wwh">
                             <connections>
-                                <segue destination="VwC-hv-DLP" kind="presentation" id="yz0-Tl-isD"/>
+                                <segue destination="VwC-hv-DLP" kind="presentation" identifier="Settings" id="yz0-Tl-isD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -390,10 +401,10 @@
             </objects>
             <point key="canvasLocation" x="1237.5" y="1357.5"/>
         </scene>
-        <!--View Controller-->
+        <!--ImageVC-->
         <scene sceneID="QbC-HD-uX8">
             <objects>
-                <viewController id="oti-17-NOK" sceneMemberID="viewController">
+                <viewController id="oti-17-NOK" customClass="ImageVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zyt-MG-Pkb"/>
                         <viewControllerLayoutGuide type="bottom" id="rF3-IS-2bi"/>
@@ -405,16 +416,25 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-AL-PfJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HaZ-3n-FsE">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="HaZ-3n-FsE" secondAttribute="centerX" id="P9v-2K-dyc"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="leading" secondItem="HnM-Yl-Gvt" secondAttribute="leading" id="TFU-d2-mCa"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="top" secondItem="HnM-Yl-Gvt" secondAttribute="top" id="fx0-d8-4aD"/>
+                            <constraint firstAttribute="centerY" secondItem="HaZ-3n-FsE" secondAttribute="centerY" id="okE-ia-9DO"/>
                             <constraint firstAttribute="trailing" secondItem="Dgb-AL-PfJ" secondAttribute="trailing" id="q7l-bz-h1v"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="bottom" secondItem="rF3-IS-2bi" secondAttribute="top" id="tcD-AP-TU6"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="indicator" destination="HaZ-3n-FsE" id="ixD-JJ-nqu"/>
+                        <outlet property="scrollView" destination="Dgb-AL-PfJ" id="vfp-Mh-NXr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyS-a6-mOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -423,7 +443,7 @@
         <!--Settings-->
         <scene sceneID="I5l-Pp-cUy">
             <objects>
-                <tableViewController id="IK6-ky-m21" sceneMemberID="viewController">
+                <tableViewController id="IK6-ky-m21" customClass="SettingsTableVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cpz-l8-293">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,8 +550,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="9DW-qN-Chi">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7Jb-fh-cns"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="Id2-rl-3Az"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7Jb-fh-cns">
+                            <connections>
+                                <action selector="cancel:" destination="IK6-ky-m21" id="2Pr-uj-xcJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="Id2-rl-3Az">
+                            <connections>
+                                <action selector="done:" destination="IK6-ky-m21" id="haA-d8-zye"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slg-iW-iCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,7 +570,7 @@
         <scene sceneID="mRJ-Rn-wVu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yin-7X-LMU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tweets" id="TPo-CP-Y1e"/>
+                    <tabBarItem key="tabBarItem" title="Tweets" image="tweets_30px" id="TPo-CP-Y1e"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r31-EL-9A5">
@@ -600,7 +628,7 @@
         <scene sceneID="OWq-zP-YFu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kto-SF-qcv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Images" id="Z9j-9j-g2a"/>
+                    <tabBarItem key="tabBarItem" title="Images" image="photos_30px" id="Z9j-9j-g2a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pkm-nl-pUM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -637,11 +665,13 @@
     <resources>
         <image name="bunny" width="500" height="369"/>
         <image name="favorite" width="500" height="500"/>
+        <image name="photos_30px" width="30" height="30"/>
         <image name="retweet" width="484" height="484"/>
         <image name="turtle" width="1172" height="600"/>
+        <image name="tweets_30px" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IpV-ir-8ve"/>
         <segue reference="yz0-Tl-isD"/>
+        <segue reference="IpV-ir-8ve"/>
     </inferredMetricsTieBreakers>
 </document>

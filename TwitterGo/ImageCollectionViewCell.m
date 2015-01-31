@@ -19,10 +19,21 @@
 
 -(void) setImageURL:(NSURL*) imageURL {
     _imageURL = imageURL;
-    [self.indicator startAnimating];
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
-    self.imageView.image = image;
-    [self.indicator stopAnimating];
+    NSLog(@"%@", _imageURL);
+    if(_imageURL){
+        [self.indicator startAnimating];
+        dispatch_queue_t queue = dispatch_queue_create("image fetcher", NULL);
+        dispatch_async(queue, ^{
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imageView.image = image;
+                [self.indicator stopAnimating];
+            });
+        });
+        
+    } else {
+        self.imageView.image = [UIImage imageNamed:@"unavailable_text_100px"];
+    }
 }
 
 

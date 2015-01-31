@@ -50,12 +50,8 @@
         
         NSURL* imageURL = nil;
         if (imageURLString) {
-            imageURL = [NSURL URLWithString:[ NSString stringWithFormat: @"%@:thumb", imageURLString] ];
-        } else {
-#warning FIX THIS
-            imageURL = [NSURL URLWithString:@"http://pbs.twimg.com/media/B8jg5QfIcAAbDjn.jpg:thumb"];
+            imageURL = [NSURL URLWithString: imageURLString];
         }
-        
         Tweet* tweet = [[Tweet alloc] initTweet:author
                                         message:message
                                        retweets:retweets
