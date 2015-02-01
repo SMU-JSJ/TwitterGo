@@ -16,13 +16,11 @@
 
 @property (strong, nonatomic) TweetModel* tweetModel;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) NSString* trend;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *currentTrend;
 
 @end
 
 @implementation ImageCollectionVC
-
-@synthesize trend = _trend;
 
 -(TweetModel*) tweetModel {
     if(!_tweetModel)
@@ -31,21 +29,9 @@
     return _tweetModel;
 }
 
--(NSString*) trend {
-    if(!_trend)
-        _trend = @"%23hashtag";
-    
-    return _trend;
-}
-
--(void) setTrend: (NSString*) trend {
-    _trend = trend;
-    [self getTwitterJSON];
-}
-
 -(void) getTwitterJSON {
     NSNumber* numberOfTweets = @10;
-    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@%%20filter%%3Aimages&result_type=mixed&count=%@&include_entities=true", self.trend, numberOfTweets];
+    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@%%20filter%%3Aimages&result_type=mixed&count=%@&include_entities=true", self.tweetModel.currentTrend.query, numberOfTweets];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -74,6 +60,8 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
     
     [self.tweetModel.tweets removeAllObjects];
     [self getTwitterJSON];
@@ -132,6 +120,9 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 - (void)trendVCDidSave:(TrendVC *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+    [self getTwitterJSON];
 }
 
 #pragma mark - SettingsTableVCDelegate

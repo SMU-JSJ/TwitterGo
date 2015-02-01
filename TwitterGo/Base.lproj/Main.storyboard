@@ -258,7 +258,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Wkr-kc-Cvo">
-                        <barButtonItem key="leftBarButtonItem" title="#hashtag ▾" id="3ds-v4-ElG">
+                        <barButtonItem key="leftBarButtonItem" title="Loading..." id="3ds-v4-ElG">
                             <connections>
                                 <segue destination="A7z-cP-d2H" kind="presentation" identifier="TrendPicker" id="E3I-FZ-gRa"/>
                             </connections>
@@ -275,6 +275,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="currentTrend" destination="3ds-v4-ElG" id="L0W-3Q-G2s"/>
                         <outlet property="tableView" destination="nW7-Ob-iuA" id="QYL-ip-lii"/>
                     </connections>
                 </tableViewController>
@@ -297,13 +298,18 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y92-zR-Hht">
                                 <rect key="frame" x="0.0" y="253" width="375" height="162"/>
                             </pickerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wbD-S7-ZSZ">
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y92-zR-Hht" firstAttribute="leading" secondItem="uab-Il-KYH" secondAttribute="leadingMargin" constant="-16" id="1J6-4p-aQI"/>
                             <constraint firstAttribute="centerX" secondItem="y92-zR-Hht" secondAttribute="centerX" id="6a3-Xb-Rvy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y92-zR-Hht" secondAttribute="trailing" constant="-16" id="Fn8-w5-ehL"/>
+                            <constraint firstAttribute="centerY" secondItem="wbD-S7-ZSZ" secondAttribute="centerY" id="SD0-cT-8xV"/>
                             <constraint firstAttribute="centerY" secondItem="y92-zR-Hht" secondAttribute="centerY" id="TVz-vi-0IU"/>
+                            <constraint firstAttribute="centerX" secondItem="wbD-S7-ZSZ" secondAttribute="centerX" id="rgT-jP-G0M"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trends" id="dFZ-au-fXt">
@@ -320,6 +326,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="indicator" destination="wbD-S7-ZSZ" id="fEO-qU-R6A"/>
                         <outlet property="picker" destination="y92-zR-Hht" id="vWh-1y-E0x"/>
                     </connections>
                 </viewController>
@@ -380,7 +387,7 @@
                     </collectionView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UbF-P7-Ap2">
-                        <barButtonItem key="leftBarButtonItem" title="#hashtag ▾" id="GPq-UM-THS">
+                        <barButtonItem key="leftBarButtonItem" title="Loading..." id="GPq-UM-THS">
                             <connections>
                                 <segue destination="A7z-cP-d2H" kind="presentation" identifier="TrendPicker" id="IpV-ir-8ve"/>
                             </connections>
@@ -395,6 +402,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="ezL-9P-3qf" id="nGB-7R-VqB"/>
+                        <outlet property="currentTrend" destination="GPq-UM-THS" id="B9S-x0-XCv"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4v-St-OEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -671,7 +679,7 @@
         <image name="tweets_30px" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yz0-Tl-isD"/>
-        <segue reference="IpV-ir-8ve"/>
+        <segue reference="RZC-AU-X4e"/>
+        <segue reference="E3I-FZ-gRa"/>
     </inferredMetricsTieBreakers>
 </document>

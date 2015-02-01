@@ -15,9 +15,9 @@
 
 @interface TweetTableVC ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *currentTrend;
 @property (strong, nonatomic) TweetModel* tweetModel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSString* trend;
 @property (strong, nonatomic) NSString* type;
 
 @end
@@ -25,7 +25,6 @@
 @implementation TweetTableVC
 
 @synthesize type = _type;
-@synthesize trend = _trend;
 
 -(TweetModel*) tweetModel {
     if(!_tweetModel)
@@ -46,19 +45,6 @@
     [self getTwitterJSON];
 }
 
--(NSString*) trend {
-    if(!_trend)
-        _trend = @"%23hashtag";
-    
-    return _trend;
-}
-
--(void) setTrend: (NSString*) trend {
-    _trend = trend;
-    [self getTwitterJSON];
-}
-
-
 - (IBAction)changeResultType:(UISegmentedControl*)sender {
     NSInteger selectedSegment = sender.selectedSegmentIndex;
     if (selectedSegment == 0 ) {
@@ -76,7 +62,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.tweetModel.tweets removeAllObjects];
-    [self getTwitterJSON];
+    [self setInitialTrend];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -87,7 +74,7 @@
 
 -(void) getTwitterJSON {
     NSNumber* numberOfTweets = @10;
-    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&result_type=%@&count=%@", self.trend, self.type, numberOfTweets];
+    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&result_type=%@&count=%@", self.tweetModel.currentTrend.query, self.type, numberOfTweets];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -114,6 +101,38 @@
             }] resume];
 }
 
+-(void) setInitialTrend {
+    NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/trends/place.json?id=23424977"];
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+                
+                NSError* otherError;
+                NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
+                NSDictionary* jsonDict = [json objectAtIndex:0];
+                
+                NSDictionary* trend = [[jsonDict objectForKey:@"trends"] firstObject];
+                NSString* name = [trend objectForKey:@"name"];
+                NSString* query = [trend objectForKey:@"query"];
+                self.tweetModel.currentTrend = [[Trend alloc] initTrend:name
+                                                                  query:query];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+                    [self getTwitterJSON];
+                });
+                
+                
+            }] resume];
+}
+
 #pragma mark - TrendVCDelegate
 
 - (void)trendVCDidCancel:(TrendVC *)controller
@@ -124,6 +143,10 @@
 - (void)trendVCDidSave:(TrendVC *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+    [self getTwitterJSON];
+    
 }
 
 #pragma mark - SettingsTableVCDelegate

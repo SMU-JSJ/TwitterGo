@@ -19,7 +19,6 @@
 
 -(void) setImageURL:(NSURL*) imageURL {
     _imageURL = imageURL;
-    NSLog(@"%@", _imageURL);
     if(_imageURL){
         [self.indicator startAnimating];
         dispatch_queue_t queue = dispatch_queue_create("image fetcher", NULL);

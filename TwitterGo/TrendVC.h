@@ -17,7 +17,7 @@
 
 @end
 
-@interface TrendVC : UIViewController
+@interface TrendVC : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, weak) id <TrendVCDelegate> delegate;
 
