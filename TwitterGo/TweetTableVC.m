@@ -56,14 +56,24 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    [self.tweetModel.tweets removeAllObjects];
+    
+    if(self.tweetModel.currentTrend) {
+        [self getTwitterJSON];
+    } else {
+        [self setInitialTrend];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self.tweetModel.tweets removeAllObjects];
-    [self setInitialTrend];
-    
+    [self checkSettings];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -72,8 +82,25 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void) checkSettings {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(![defaults stringForKey:@"tweetLimit"]) {
+        [defaults setObject:@"10" forKey:@"tweetLimit"];
+    }
+    
+    if(![defaults integerForKey:@"updatesSpeed"]) {
+        [defaults setInteger:60 forKey:@"updatesSpeed"];
+    }
+    
+    if(![defaults integerForKey:@"updatesSwitch"]) {
+        [defaults setInteger:1 forKey:@"updatesSwitch"];
+    }
+}
+
 -(void) getTwitterJSON {
-    NSNumber* numberOfTweets = @10;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* numberOfTweets = [defaults stringForKey:@"tweetLimit"];
     NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&result_type=%@&count=%@", self.tweetModel.currentTrend.query, self.type, numberOfTweets];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -93,6 +120,7 @@
                 [self.tweetModel addAllTweets:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                     [self.refreshControl endRefreshing];
                     
                 });
@@ -125,7 +153,6 @@
                                                                   query:query];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                     [self getTwitterJSON];
                 });
                 

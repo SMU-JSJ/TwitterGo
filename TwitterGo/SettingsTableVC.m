@@ -10,9 +10,23 @@
 
 @interface SettingsTableVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *tweetLimit;
+@property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property (weak, nonatomic) IBOutlet UISwitch *updatesSwitch;
+@property (weak, nonatomic) IBOutlet UISlider *updatesSpeed;
+@property (weak, nonatomic) IBOutlet UITableViewCell *updatesSpeedCell;
+
 @end
 
 @implementation SettingsTableVC
+
+- (IBAction)updatesSwitchChanged:(UISwitch *)sender {
+    self.updatesSpeedCell.hidden = ![sender isOn];
+}
+
+- (IBAction)stepperChanged:(UIStepper *)sender {
+    self.tweetLimit.text = [NSString stringWithFormat:@"%.0f", sender.value];
+}
 
 - (IBAction)cancel:(id)sender
 {
@@ -21,7 +35,27 @@
 
 - (IBAction)done:(id)sender
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:self.tweetLimit.text forKey:@"tweetLimit"];
+    [defaults setInteger:self.updatesSpeed.value forKey:@"updatesSpeed"];
+    [defaults setInteger:[self.updatesSwitch isOn] forKey:@"updatesSwitch"];
+    
     [self.delegate settingsTableVCDidSave:self];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* numberOfTweets = [defaults stringForKey:@"tweetLimit"];
+    NSInteger updatesSpeed = [defaults integerForKey:@"updatesSpeed"];
+    NSInteger updatesSwitch = [defaults integerForKey:@"updatesSwitch"];
+    
+    self.tweetLimit.text = numberOfTweets;
+    self.stepper.value = [numberOfTweets integerValue];
+    self.updatesSpeed.value = updatesSpeed;
+    [self.updatesSwitch setOn:updatesSwitch];
 }
 
 - (void)viewDidLoad {

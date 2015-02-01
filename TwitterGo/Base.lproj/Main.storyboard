@@ -464,15 +464,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rx-ex-HyE" id="A0n-0O-IPg">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-Gt-Vax">
-                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
-                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ll-Yf-JDh">
                                                     <rect key="frame" x="16" y="11" width="148" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-Gt-Vax">
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="updatesSwitchChanged:" destination="IK6-ky-m21" eventType="valueChanged" id="dk6-Z3-kSa"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="qo3-Gt-Vax" secondAttribute="centerY" id="ap5-wN-JU8"/>
@@ -487,23 +490,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1g4-Gl-r7c" id="WUX-Hy-dqf">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunny" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-V6-mZO">
-                                                    <rect key="frame" x="333" y="11" width="26" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="7GD-87-RPz"/>
-                                                        <constraint firstAttribute="height" constant="22" id="Dm0-l8-wfg"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turtle" translatesAutoresizingMaskIntoConstraints="NO" id="8HV-6u-ceh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunny" translatesAutoresizingMaskIntoConstraints="NO" id="8HV-6u-ceh">
                                                     <rect key="frame" x="16" y="12" width="30" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="SC3-bo-bU1"/>
                                                         <constraint firstAttribute="height" constant="19" id="z8e-BT-FpV"/>
                                                     </constraints>
                                                 </imageView>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-SF-fsA">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="30" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-SF-fsA">
                                                     <rect key="frame" x="52" y="7" width="275" height="31"/>
                                                 </slider>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turtle" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-V6-mZO">
+                                                    <rect key="frame" x="333" y="11" width="26" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="26" id="7GD-87-RPz"/>
+                                                        <constraint firstAttribute="height" constant="22" id="Dm0-l8-wfg"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lV9-V6-mZO" firstAttribute="leading" secondItem="rV5-SF-fsA" secondAttribute="trailing" constant="8" id="A4F-bI-ihI"/>
@@ -531,10 +534,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RSk-Sk-dxN" id="Ekl-Ma-mJp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4C9-hl-Dno">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="5" maximumValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="4C9-hl-Dno">
                                                     <rect key="frame" x="265" y="7" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="stepperChanged:" destination="IK6-ky-m21" eventType="valueChanged" id="bx8-ez-jkf"/>
+                                                    </connections>
                                                 </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKc-qO-Wge">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKc-qO-Wge">
                                                     <rect key="frame" x="16" y="11" width="20" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -569,6 +575,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="stepper" destination="4C9-hl-Dno" id="8Vh-PY-wnw"/>
+                        <outlet property="tweetLimit" destination="yKc-qO-Wge" id="wUo-hl-nlv"/>
+                        <outlet property="updatesSpeed" destination="rV5-SF-fsA" id="8uc-eE-5mc"/>
+                        <outlet property="updatesSpeedCell" destination="1g4-Gl-r7c" id="Gt5-1N-AYQ"/>
+                        <outlet property="updatesSwitch" destination="qo3-Gt-Vax" id="LXG-Lx-gDr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slg-iW-iCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

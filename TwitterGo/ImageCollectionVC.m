@@ -30,7 +30,8 @@
 }
 
 -(void) getTwitterJSON {
-    NSNumber* numberOfTweets = @10;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* numberOfTweets = [defaults stringForKey:@"tweetLimit"];
     NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@%%20filter%%3Aimages&result_type=mixed&count=%@&include_entities=true", self.tweetModel.currentTrend.query, numberOfTweets];
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -49,7 +50,7 @@
                 [self.tweetModel addAllTweets:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.collectionView reloadData];
-                    
+                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                 });
                 
                 
@@ -58,13 +59,15 @@
 
 static NSString * const reuseIdentifier = @"TweetImageCell";
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     
     [self.tweetModel.tweets removeAllObjects];
     [self getTwitterJSON];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
