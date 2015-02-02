@@ -56,6 +56,8 @@
     self.stepper.value = [numberOfTweets integerValue];
     self.updatesSpeed.value = updatesSpeed;
     [self.updatesSwitch setOn:updatesSwitch];
+    
+    self.updatesSpeedCell.hidden = ![self.updatesSwitch isOn];
 }
 
 - (void)viewDidLoad {

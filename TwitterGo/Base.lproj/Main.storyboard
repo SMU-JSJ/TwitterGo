@@ -490,22 +490,38 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1g4-Gl-r7c" id="WUX-Hy-dqf">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunny" translatesAutoresizingMaskIntoConstraints="NO" id="8HV-6u-ceh">
-                                                    <rect key="frame" x="16" y="12" width="30" height="19"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="SC3-bo-bU1"/>
-                                                        <constraint firstAttribute="height" constant="19" id="z8e-BT-FpV"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="30" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-SF-fsA">
-                                                    <rect key="frame" x="52" y="7" width="275" height="31"/>
-                                                </slider>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turtle" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-V6-mZO">
-                                                    <rect key="frame" x="333" y="11" width="26" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turtle_22px" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-V6-mZO">
+                                                    <rect key="frame" x="337" y="11" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="26" id="7GD-87-RPz"/>
                                                         <constraint firstAttribute="height" constant="22" id="Dm0-l8-wfg"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="TEg-Sq-rEg"/>
+                                                        <constraint firstAttribute="width" constant="22" id="muw-4o-Kth"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="7GD-87-RPz"/>
+                                                            <exclude reference="TEg-Sq-rEg"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="10" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-SF-fsA">
+                                                    <rect key="frame" x="44" y="7" width="287" height="31"/>
+                                                </slider>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunny_22px" translatesAutoresizingMaskIntoConstraints="NO" id="8HV-6u-ceh">
+                                                    <rect key="frame" x="16" y="11" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="2hn-o3-oPu"/>
+                                                        <constraint firstAttribute="width" constant="30" id="SC3-bo-bU1"/>
+                                                        <constraint firstAttribute="width" constant="22" id="tpS-Kc-7iY"/>
+                                                        <constraint firstAttribute="height" constant="19" id="z8e-BT-FpV"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="SC3-bo-bU1"/>
+                                                            <exclude reference="z8e-BT-FpV"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -684,11 +700,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bunny" width="500" height="369"/>
+        <image name="bunny_22px" width="22" height="22"/>
         <image name="favorite" width="500" height="500"/>
         <image name="photos_30px" width="30" height="30"/>
         <image name="retweet" width="484" height="484"/>
-        <image name="turtle" width="1172" height="600"/>
+        <image name="turtle_22px" width="22" height="22"/>
         <image name="tweets_30px" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

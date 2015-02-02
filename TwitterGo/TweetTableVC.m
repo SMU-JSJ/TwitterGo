@@ -19,6 +19,7 @@
 @property (strong, nonatomic) TweetModel* tweetModel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString* type;
+@property (strong, nonatomic) NSTimer* timer;
 
 @end
 
@@ -66,6 +67,22 @@
     } else {
         [self setInitialTrend];
     }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.timer) {
+        [self.timer invalidate];
+    }
+    
+    if([defaults integerForKey:@"updatesSwitch"] == 1) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:[defaults integerForKey:@"updatesSpeed"]
+                                                 target:self
+                                               selector:@selector(getTwitterJSON)
+                                               userInfo:nil
+                                                repeats:YES];
+        
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)viewDidLoad {
@@ -74,6 +91,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self checkSettings];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

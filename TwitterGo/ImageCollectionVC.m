@@ -17,6 +17,7 @@
 @property (strong, nonatomic) TweetModel* tweetModel;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentTrend;
+@property (strong, nonatomic) NSTimer* timer;
 
 @end
 
@@ -64,6 +65,22 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
     
     [self.tweetModel.tweets removeAllObjects];
     [self getTwitterJSON];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.timer) {
+        [self.timer invalidate];
+    }
+    
+    if([defaults integerForKey:@"updatesSwitch"] == 1) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:[defaults integerForKey:@"updatesSpeed"]
+                                                      target:self
+                                                    selector:@selector(getTwitterJSON)
+                                                    userInfo:nil
+                                                     repeats:YES];
+        
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    }
 }
 
 - (void)viewDidLoad {

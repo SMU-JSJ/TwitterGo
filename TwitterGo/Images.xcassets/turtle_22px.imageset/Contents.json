@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "bunny.png"
+      "filename" : "turtle_22px.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "turtle_44px.png"
     },
     {
       "idiom" : "universal",
