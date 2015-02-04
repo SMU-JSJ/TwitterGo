@@ -31,53 +31,81 @@
     return _tweetModel;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Load tweets
+    [self setTrendName];
+    [self createTimer];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Reload tweets if the trend was changed
+    [self setTrendName];
+}
+
+// Set the trend in the navigation bar
+- (void)setTrendName {
+    NSString *selectedTrend = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+    
+    // Only reload the trend name and tweets if the user has changed the trend
+    if (![self.currentTrend.title isEqualToString:selectedTrend]) {
+        self.currentTrend.title = selectedTrend;
+        [self getTwitterJSON];
+    }
+}
+
+// Download JSON of tweets using the Twitter API
 -(void) getTwitterJSON {
+    // Get the setting for number of tweets to show
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* numberOfTweets = [defaults stringForKey:@"tweetLimit"];
+    
     NSString* searchURL = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@%%20filter%%3Aimages&result_type=mixed&count=%@&include_entities=true", self.tweetModel.currentTrend.query, numberOfTweets];
     
+    // Add authentication header to the HTTP request
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
+    // Remove old tweets and show a loading spinner
     [self.tweetModel.tweets removeAllObjects];
     [self.collectionView reloadData];
     [self.indicator startAnimating];
     [self.collectionView setUserInteractionEnabled:NO];
     
+    // Send HTTP request
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
             completionHandler:^(NSData *data,
                                 NSURLResponse *response,
                                 NSError *error) {
+                // Convert NSData to JSON
                 NSError* otherError;
                 NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
+                
+                // Convert JSON to tweets
                 [self.tweetModel.tweets removeAllObjects];
                 [self.tweetModel addAllTweets:json];
+                
+                // Update UI
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.indicator stopAnimating];
                     [self.collectionView reloadData];
                     [self.collectionView setUserInteractionEnabled:YES];
-                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                 });
-                
                 
             }] resume];
 }
 
-static NSString * const reuseIdentifier = @"TweetImageCell";
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
-    
-    [self getTwitterJSON];
+// Stop any existing timer and create a new timer for reloading tweets
+- (void) createTimer {
+    [self.timer invalidate];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if(self.timer) {
-        [self.timer invalidate];
-    }
-    
+    // Only create the timer if the user wants tweets to reload
     if([defaults integerForKey:@"updatesSwitch"] == 1) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:[defaults integerForKey:@"updatesSpeed"]
                                                       target:self
@@ -88,21 +116,6 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
         [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     }
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Navigation
 
@@ -118,48 +131,41 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
         Tweet* tweet = (Tweet*)self.tweetModel.tweets[[self.collectionView indexPathForCell: cell].row];
         vc.imageURL = tweet.imageURL;
     } else if ([segue.identifier isEqualToString:@"TrendPicker"]) {
-        
         UINavigationController *navigationController = segue.destinationViewController;
         TrendVC *trendVC = [navigationController viewControllers][0];
         trendVC.delegate = self;
     } else if ([segue.identifier isEqualToString:@"Settings"]) {
-        
         UINavigationController *navigationController = segue.destinationViewController;
         SettingsTableVC *settingsTableVC = [navigationController viewControllers][0];
         settingsTableVC.delegate = self;
     }
-    
-    
-    
 }
 
 #pragma mark - TrendVCDelegate
 
-- (void)trendVCDidCancel:(TrendVC *)controller
-{
+- (void)trendVCDidCancel:(TrendVC *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)trendVCDidSave:(TrendVC *)controller
-{
+- (void)trendVCDidSave:(TrendVC *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
-    [self getTwitterJSON];
+    // Reload tweets
+    [self setTrendName];
 }
 
 #pragma mark - SettingsTableVCDelegate
 
-- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller
-{
+- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)settingsTableVCDidSave:(SettingsTableVC *)controller
-{
+- (void)settingsTableVCDidSave:(SettingsTableVC *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    // Reload tweets and reset timer
     [self getTwitterJSON];
+    [self createTimer];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -174,7 +180,7 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TweetImageCell" forIndexPath:indexPath];
     
     Tweet* tweet = nil;
     
@@ -190,36 +196,5 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
     
     return cell;
 }
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

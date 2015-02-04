@@ -10,6 +10,7 @@
 
 @implementation Tweet
 
+// Constructor
 -(id) initTweet:(NSString*) author
         message:(NSString*) message
        retweets:(NSNumber*) retweets
@@ -20,7 +21,8 @@
 {
     self = [super init];
     
-    if(self) {
+    // Set member variables
+    if (self) {
         self.author = author;
         self.message = message;
         self.retweets = retweets;
