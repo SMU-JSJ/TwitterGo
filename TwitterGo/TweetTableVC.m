@@ -125,7 +125,7 @@
     
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
-    [self.refreshControl beginRefreshing];
+    [self.tableView setUserInteractionEnabled:NO];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
@@ -138,11 +138,10 @@
                 [self.tweetModel addAllTweets:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
-                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
-                    [self.refreshControl endRefreshing];
+                    [self.tableView setUserInteractionEnabled:YES];
                     
+                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                 });
-                
                 
             }] resume];
 }

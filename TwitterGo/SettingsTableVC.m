@@ -44,8 +44,8 @@
     [self.delegate settingsTableVCDidSave:self];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* numberOfTweets = [defaults stringForKey:@"tweetLimit"];

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentTrend;
 @property (strong, nonatomic) NSTimer* timer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 @end
 
@@ -39,6 +40,10 @@
     
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
+    [self.tweetModel.tweets removeAllObjects];
+    [self.collectionView reloadData];
+    [self.indicator startAnimating];
+    [self.collectionView setUserInteractionEnabled:NO];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
@@ -50,7 +55,9 @@
                 [self.tweetModel.tweets removeAllObjects];
                 [self.tweetModel addAllTweets:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.indicator stopAnimating];
                     [self.collectionView reloadData];
+                    [self.collectionView setUserInteractionEnabled:YES];
                     self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
                 });
                 
@@ -63,7 +70,6 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     
-    [self.tweetModel.tweets removeAllObjects];
     [self getTwitterJSON];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -88,9 +94,6 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
 }
@@ -155,6 +158,8 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 - (void)settingsTableVCDidSave:(SettingsTableVC *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self getTwitterJSON];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -171,14 +176,17 @@ static NSString * const reuseIdentifier = @"TweetImageCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    Tweet* tweet = (Tweet*)self.tweetModel.tweets[indexPath.row];
-
+    Tweet* tweet = nil;
     
-    NSURL* imageURL = nil;
-    if (tweet.imageURL) {
-        imageURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@:thumb", tweet.imageURL]];
+    if ([self.tweetModel.tweets count] > indexPath.row) {
+        tweet = (Tweet*)self.tweetModel.tweets[indexPath.row];
+        
+        NSURL* imageURL = nil;
+        if (tweet.imageURL) {
+            imageURL = [NSURL URLWithString: [NSString stringWithFormat: @"%@:thumb", tweet.imageURL]];
+        }
+        cell.imageURL = imageURL;
     }
-    cell.imageURL = imageURL;
     
     return cell;
 }
