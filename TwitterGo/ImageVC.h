@@ -1,4 +1,4 @@
-//  Jessica
+//
 //  ImageVC.h
 //  TwitterGo
 //

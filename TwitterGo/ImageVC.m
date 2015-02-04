@@ -10,33 +10,52 @@
 
 @interface ImageVC () <UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 @end
 
 @implementation ImageVC
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.scrollView addSubview:self.imageView];
+}
+
+// Set the image URL and download the image in another queue
 -(void) setImageURL:(NSURL*) imageURL {
     _imageURL = imageURL;
-    if(_imageURL){
+    
+    // Only go download the image if there is an image URL
+    if (self.imageURL) {
+        // Show the loading spinner
         [self.indicator startAnimating];
+        
+        // Create queue for downloading image
         dispatch_queue_t queue = dispatch_queue_create("image fetcher", NULL);
         dispatch_async(queue, ^{
             UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
+            
+            // Update UI
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.image = image;
+                
+                // Hide the loading spinner
+                [self.indicator stopAnimating];
             });
         });
-        
     } else {
+        // Image unavailable
         self.image = [UIImage imageNamed:@"unavailable_text_100px"];
     }
 }
 
-- (void) setScrollView:(UIScrollView *)scrollView{
+// Configure scroll view options
+- (void) setScrollView:(UIScrollView *)scrollView {
     _scrollView = scrollView;
     _scrollView.minimumZoomScale = 0.2;
     _scrollView.maximumZoomScale = 2.0;
@@ -44,48 +63,27 @@
     _scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
 
--(UIImage *)image{
+-(UIImage *)image {
     return self.imageView.image;
 }
 
-- (void) setImage:(UIImage *)image{
+- (void)setImage:(UIImage *)image{
     self.imageView.image = image;
     [self.imageView sizeToFit];
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
-    [self.indicator stopAnimating];
 }
 
--(UIImageView*) imageView {
-    if(!_imageView)
+-(UIImageView*)imageView {
+    if(!_imageView) {
         _imageView = [[UIImageView alloc] init];
+    }
     
     return _imageView;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [self.scrollView addSubview:self.imageView];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+// Allow the image to be zoomed in the scroll view
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
