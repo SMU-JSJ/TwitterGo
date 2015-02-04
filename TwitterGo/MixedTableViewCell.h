@@ -1,4 +1,4 @@
-//  Jessica
+//
 //  MixedTableViewCell.h
 //  TwitterGo
 //

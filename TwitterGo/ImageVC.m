@@ -69,6 +69,8 @@
 
 - (void)setImage:(UIImage *)image{
     self.imageView.image = image;
+    
+    // Readjust views for the new image
     [self.imageView sizeToFit];
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
