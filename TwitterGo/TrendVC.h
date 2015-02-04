@@ -1,4 +1,4 @@
-//
+//  Jordan
 //  TrendVC.h
 //  TwitterGo
 //

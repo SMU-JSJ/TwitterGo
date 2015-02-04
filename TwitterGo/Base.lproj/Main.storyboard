@@ -424,7 +424,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-AL-PfJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="623"/>
                             </scrollView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HaZ-3n-FsE">
                                 <rect key="frame" x="178" y="324" width="20" height="20"/>
@@ -432,13 +432,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dgb-AL-PfJ" secondAttribute="trailing" id="Ajd-Zb-IEi"/>
                             <constraint firstAttribute="centerX" secondItem="HaZ-3n-FsE" secondAttribute="centerX" id="P9v-2K-dyc"/>
+                            <constraint firstItem="Dgb-AL-PfJ" firstAttribute="leading" secondItem="HnM-Yl-Gvt" secondAttribute="leadingMargin" id="Qh6-u3-5oo"/>
+                            <constraint firstItem="Dgb-AL-PfJ" firstAttribute="top" secondItem="HnM-Yl-Gvt" secondAttribute="topMargin" id="RHz-j7-d2i"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="leading" secondItem="HnM-Yl-Gvt" secondAttribute="leading" id="TFU-d2-mCa"/>
+                            <constraint firstItem="rF3-IS-2bi" firstAttribute="top" secondItem="Dgb-AL-PfJ" secondAttribute="bottom" id="aaV-mq-rms"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="top" secondItem="HnM-Yl-Gvt" secondAttribute="top" id="fx0-d8-4aD"/>
                             <constraint firstAttribute="centerY" secondItem="HaZ-3n-FsE" secondAttribute="centerY" id="okE-ia-9DO"/>
                             <constraint firstAttribute="trailing" secondItem="Dgb-AL-PfJ" secondAttribute="trailing" id="q7l-bz-h1v"/>
                             <constraint firstItem="Dgb-AL-PfJ" firstAttribute="bottom" secondItem="rF3-IS-2bi" secondAttribute="top" id="tcD-AP-TU6"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TFU-d2-mCa"/>
+                                <exclude reference="fx0-d8-4aD"/>
+                                <exclude reference="q7l-bz-h1v"/>
+                                <exclude reference="tcD-AP-TU6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
