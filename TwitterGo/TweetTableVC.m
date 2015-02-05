@@ -60,29 +60,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     
-    [self.tweetModel.tweets removeAllObjects];
-    
     if(self.tweetModel.currentTrend) {
         [self getTwitterJSON];
     } else {
         [self setInitialTrend];
     }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if(self.timer) {
-        [self.timer invalidate];
-    }
-    
-    if([defaults integerForKey:@"updatesSwitch"] == 1) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:[defaults integerForKey:@"updatesSpeed"]
-                                                 target:self
-                                               selector:@selector(getTwitterJSON)
-                                               userInfo:nil
-                                                repeats:YES];
-        
-        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    }
+    [self setTrendName];
+    [self createTimer];
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [self.timer invalidate];
 }
 
 - (void)viewDidLoad {
@@ -100,7 +89,34 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
--(void) checkSettings {
+// Set the trend in the navigation bar
+- (void)setTrendName {
+    NSString *selectedTrend = [self shortenTrend:self.tweetModel.currentTrend.name];
+    
+    // Only reload the trend name and tweets if the user has changed the trend
+    if (![self.currentTrend.title isEqualToString:selectedTrend]) {
+        self.currentTrend.title = selectedTrend;
+        // Remove old tweets and show a loading spinner
+        [self.tweetModel.tweets removeAllObjects];
+        [self.tableView reloadData];
+        [self getTwitterJSON];
+        [self createTimer];
+    }
+    
+    if([self.currentTrend.title containsString:@"(null)"]) {
+        self.currentTrend.title = @"Loading...";
+    }
+}
+
+- (NSString*)shortenTrend:(NSString*)trendName {
+    if ([trendName length] >= 25) {
+        return [NSString stringWithFormat:@"%@... ▾", [trendName substringToIndex:22]];
+    }
+    
+    return [NSString stringWithFormat:@"%@ ▾", trendName];
+}
+
+- (void) checkSettings {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if(![defaults stringForKey:@"tweetLimit"]) {
@@ -125,8 +141,6 @@
     
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
-    [self.tableView setUserInteractionEnabled:NO];
-    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
             completionHandler:^(NSData *data,
@@ -134,13 +148,12 @@
                                 NSError *error) {
                 NSError* otherError;
                 NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
-                [self.tweetModel.tweets removeAllObjects];
+                
                 [self.tweetModel addAllTweets:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
-                    [self.tableView setUserInteractionEnabled:YES];
                     
-                    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+                    self.currentTrend.title = [self shortenTrend:self.tweetModel.currentTrend.name];
                 });
                 
             }] resume];
@@ -160,8 +173,15 @@
                                 NSError *error) {
                 
                 NSError* otherError;
-                NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
-                NSDictionary* jsonDict = [json objectAtIndex:0];
+                id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
+                
+                NSDictionary* jsonDict = nil;
+                
+                if ([json isKindOfClass:[NSArray class]]) {
+                    jsonDict = [json firstObject];
+                } else {
+                    jsonDict = json;
+                }
                 
                 NSDictionary* trend = [[jsonDict objectForKey:@"trends"] firstObject];
                 NSString* name = [trend objectForKey:@"name"];
@@ -177,6 +197,25 @@
             }] resume];
 }
 
+
+// Stop any existing timer and create a new timer for reloading tweets
+- (void) createTimer {
+    [self.timer invalidate];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Only create the timer if the user wants tweets to reload
+    if([defaults integerForKey:@"updatesSwitch"] == 1) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:[defaults integerForKey:@"updatesSpeed"]
+                                                      target:self
+                                                    selector:@selector(getTwitterJSON)
+                                                    userInfo:nil
+                                                     repeats:YES];
+        
+        [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    }
+}
+
 #pragma mark - TrendVCDelegate
 
 - (void)trendVCDidCancel:(TrendVC *)controller
@@ -188,8 +227,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    self.currentTrend.title = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
-    [self getTwitterJSON];
+    [self setTrendName];
     
 }
 
@@ -229,8 +267,8 @@
         cell.author.text = tweet.author;
         cell.message.text = tweet.message;
         [cell.message sizeToFit];
-        cell.retweets.text = [NSString stringWithFormat:@"%@", tweet.retweets];
-        cell.favorites.text = [NSString stringWithFormat:@"%@", tweet.favorites];
+        cell.retweets.text = tweet.retweets;
+        cell.favorites.text = tweet.favorites;
         return cell;
         
     } else if([self.type isEqualToString:@"recent"]) {

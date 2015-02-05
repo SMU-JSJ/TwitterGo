@@ -36,7 +36,6 @@
     
     // Load tweets
     [self setTrendName];
-    [self createTimer];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -44,17 +43,35 @@
     
     // Reload tweets if the trend was changed
     [self setTrendName];
+    [self createTimer];
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [self.timer invalidate];
 }
 
 // Set the trend in the navigation bar
 - (void)setTrendName {
-    NSString *selectedTrend = [NSString stringWithFormat:@"%@ ▾", self.tweetModel.currentTrend.name];
+    NSString *selectedTrend = [self shortenTrend:self.tweetModel.currentTrend.name];
     
     // Only reload the trend name and tweets if the user has changed the trend
     if (![self.currentTrend.title isEqualToString:selectedTrend]) {
         self.currentTrend.title = selectedTrend;
+        // Remove old tweets and show a loading spinner
+        [self.tweetModel.tweets removeAllObjects];
+        [self.collectionView reloadData];
+        [self.indicator startAnimating];
         [self getTwitterJSON];
+        [self createTimer];
     }
+}
+
+- (NSString*)shortenTrend:(NSString*)trendName {
+    if ([trendName length] >= 25) {
+        return [NSString stringWithFormat:@"%@... ▾", [trendName substringToIndex:22]];
+    }
+    
+    return [NSString stringWithFormat:@"%@ ▾", trendName];
 }
 
 // Download JSON of tweets using the Twitter API
@@ -69,11 +86,7 @@
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
-    // Remove old tweets and show a loading spinner
-    [self.tweetModel.tweets removeAllObjects];
-    [self.collectionView reloadData];
-    [self.indicator startAnimating];
-    [self.collectionView setUserInteractionEnabled:NO];
+    
     
     // Send HTTP request
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
@@ -86,14 +99,12 @@
                 NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
                 
                 // Convert JSON to tweets
-                [self.tweetModel.tweets removeAllObjects];
                 [self.tweetModel addAllTweets:json];
                 
                 // Update UI
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.indicator stopAnimating];
                     [self.collectionView reloadData];
-                    [self.collectionView setUserInteractionEnabled:YES];
                 });
                 
             }] resume];

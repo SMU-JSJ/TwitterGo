@@ -13,16 +13,16 @@
 
 -(id) initTweet:(NSString*) author
         message:(NSString*) message
-       retweets:(NSNumber*) retweets
-      favorites:(NSNumber*) favorites
+       retweets:(NSString*) retweets
+      favorites:(NSString*) favorites
            date:(NSString*) date
        location:(NSString*) location
        imageURL:(NSURL*) imageURL;
 
 @property (strong, nonatomic) NSString* author;
 @property (strong, nonatomic) NSString* message;
-@property (strong, nonatomic) NSNumber* retweets;
-@property (strong, nonatomic) NSNumber* favorites;
+@property (strong, nonatomic) NSString* retweets;
+@property (strong, nonatomic) NSString* favorites;
 @property (strong, nonatomic) NSString* date;
 @property (strong, nonatomic) NSString* location;
 @property (strong, nonatomic) NSURL* imageURL;

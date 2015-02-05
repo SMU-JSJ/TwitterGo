@@ -13,8 +13,8 @@
 // Constructor
 -(id) initTweet:(NSString*) author
         message:(NSString*) message
-       retweets:(NSNumber*) retweets
-      favorites:(NSNumber*) favorites
+       retweets:(NSString*) retweets
+      favorites:(NSString*) favorites
            date:(NSString*) date
        location:(NSString*) location
        imageURL:(NSURL*) imageURL

@@ -29,20 +29,34 @@
 }
 
 
--(NSMutableArray*) tweets{
+- (NSMutableArray*) tweets {
     if(!_tweets)
         _tweets = [[NSMutableArray alloc] init];
     
     return _tweets;
 }
 
+- (NSString*) convertNumber:(NSNumber*)count {
+    if ([count intValue] >= 1000000) {
+        return [NSString stringWithFormat:@"%.1fM", [count floatValue]/1000000];
+    } else if ([count intValue] >= 100000) {
+        return [NSString stringWithFormat:@"%.0fK", [count floatValue]/1000];
+    } else if ([count intValue] >= 1000) {
+        return [NSString stringWithFormat:@"%.1fK", [count floatValue]/1000];
+    } else {
+        return [NSString stringWithFormat:@"%@", count];
+    }
+}
+
 - (void) addAllTweets:(NSDictionary*)json {
+    [self.tweets removeAllObjects];
     NSArray* statuses = [json objectForKey:@"statuses"];
+    
     for (NSDictionary* status in statuses) {
         NSString* author = [NSString stringWithFormat: @"@%@",[status valueForKeyPath:@"user.screen_name"]];
         NSString* message = [status objectForKey:@"text"];
-        NSNumber* retweets = [status objectForKey:@"retweet_count"];
-        NSNumber* favorites = [status objectForKey:@"favorite_count"];
+        NSNumber* retweets_count = [status objectForKey:@"retweet_count"];
+        NSNumber* favorites_count = [status objectForKey:@"favorite_count"];
         NSString* date = [[status objectForKey:@"created_at"] componentsSeparatedByString:@"+"][0];
         NSString* location = [status valueForKeyPath:@"user.location"];
         
@@ -52,6 +66,10 @@
         if (imageURLString) {
             imageURL = [NSURL URLWithString: imageURLString];
         }
+        
+        NSString* retweets = [self convertNumber:retweets_count];
+        NSString* favorites = [self convertNumber:favorites_count];
+        
         Tweet* tweet = [[Tweet alloc] initTweet:author
                                         message:message
                                        retweets:retweets

@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray* trends;
 @property (strong, nonatomic) Trend* temporaryTrend;
 @property (strong, nonatomic) TweetModel* tweetModel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *done;
 
 @end
 
@@ -95,6 +96,7 @@
     [sessionConfig setHTTPAdditionalHeaders:@{@"Authorization": @"Bearer AAAAAAAAAAAAAAAAAAAAAFnOdwAAAAAA6iJnaL7VNdt9YwJjQYDokvPZcMA%3DquJXwcdOF4CghCMKFaizk3yKeIdOshMXSL7v5DEnPZxMwdoD6J"}];
     
     [self.indicator startAnimating];
+    self.done.enabled = NO;
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     [[session dataTaskWithURL:[NSURL URLWithString:searchURL]
@@ -103,9 +105,15 @@
                                 NSError *error) {
                 
                 NSError* otherError;
-                NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
+                id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&otherError];
                 
-                NSDictionary* jsonDict = [json objectAtIndex:0];
+                NSDictionary* jsonDict = nil;
+                
+                if ([json isKindOfClass:[NSArray class]]) {
+                    jsonDict = [json firstObject];
+                } else {
+                    jsonDict = json;
+                }
                 
                 [self.trends removeAllObjects];
                 [self addAllTrends:jsonDict];
@@ -121,6 +129,7 @@
                     }
                     
                     [self.indicator stopAnimating];
+                    self.done.enabled = YES;
                 });
                 
                 

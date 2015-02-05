@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gSV-Aa-Ox5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -42,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@JessicaYeh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqY-Vk-8Mn">
-                                            <rect key="frame" x="16" y="8" width="84" height="17"/>
+                                            <rect key="frame" x="16" y="8" width="177" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="j85-34-hLf"/>
                                             </constraints>
@@ -57,34 +58,34 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igi-d0-V5M">
-                                            <rect key="frame" x="245" y="8" width="32" height="17"/>
+                                            <rect key="frame" x="229" y="8" width="40" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="T47-ah-Jzf"/>
-                                                <constraint firstAttribute="width" constant="32" id="oVl-16-7Xo"/>
+                                                <constraint firstAttribute="width" constant="40" id="oVl-16-7Xo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyG-gO-QxM">
-                                            <rect key="frame" x="327" y="8" width="32" height="17"/>
+                                            <rect key="frame" x="319" y="8" width="40" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="0ZR-Us-FQL"/>
-                                                <constraint firstAttribute="width" constant="32" id="mJx-YD-c4M"/>
+                                                <constraint firstAttribute="width" constant="40" id="mJx-YD-c4M"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="uqm-Zj-alf">
-                                            <rect key="frame" x="299" y="5" width="20" height="20"/>
+                                            <rect key="frame" x="291" y="5" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="ijI-a0-Wbm"/>
                                                 <constraint firstAttribute="width" constant="20" id="sgM-Nf-P4S"/>
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="m5s-sW-avX">
-                                            <rect key="frame" x="217" y="6" width="20" height="20"/>
+                                            <rect key="frame" x="201" y="6" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="OAs-Dy-F4E"/>
                                                 <constraint firstAttribute="width" constant="20" id="Quf-WH-LDV"/>
@@ -99,6 +100,7 @@
                                         <constraint firstItem="RqY-Vk-8Mn" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" id="I8Z-Y2-hoz"/>
                                         <constraint firstItem="DyG-gO-QxM" firstAttribute="trailing" secondItem="aTS-70-9wo" secondAttribute="trailingMargin" constant="-8" id="MzK-np-IAZ"/>
                                         <constraint firstItem="DnC-Yf-NRj" firstAttribute="trailing" secondItem="aTS-70-9wo" secondAttribute="trailingMargin" constant="-8" id="NDZ-S1-zen"/>
+                                        <constraint firstItem="m5s-sW-avX" firstAttribute="leading" secondItem="RqY-Vk-8Mn" secondAttribute="trailing" constant="8" id="UM3-UR-ibM"/>
                                         <constraint firstItem="igi-d0-V5M" firstAttribute="top" secondItem="aTS-70-9wo" secondAttribute="topMargin" id="a4h-ZZ-Kmz"/>
                                         <constraint firstItem="DyG-gO-QxM" firstAttribute="leading" secondItem="uqm-Zj-alf" secondAttribute="trailing" constant="8" id="dLP-Zu-xWe"/>
                                         <constraint firstItem="uqm-Zj-alf" firstAttribute="leading" secondItem="igi-d0-V5M" secondAttribute="trailing" constant="22" id="jq1-h2-LlT"/>
@@ -151,8 +153,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@JessicaYeh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8l-1h-kxC">
-                                            <rect key="frame" x="16" y="8" width="84" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@JessicaYeh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8l-1h-kxC">
+                                            <rect key="frame" x="16" y="8" width="225" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="TWu-35-bt7"/>
                                             </constraints>
@@ -170,11 +172,14 @@
                                         <constraint firstItem="A8l-1h-kxC" firstAttribute="leading" secondItem="h2p-VW-MJh" secondAttribute="leadingMargin" constant="8" id="NAI-4d-BrB"/>
                                         <constraint firstItem="iWa-gM-jxS" firstAttribute="trailing" secondItem="h2p-VW-MJh" secondAttribute="trailingMargin" constant="-8" id="Q5e-Tb-g9t"/>
                                         <constraint firstItem="H6i-1J-9qt" firstAttribute="leading" secondItem="h2p-VW-MJh" secondAttribute="leadingMargin" id="QIO-HN-QDH"/>
+                                        <constraint firstItem="iWa-gM-jxS" firstAttribute="leading" secondItem="A8l-1h-kxC" secondAttribute="trailing" constant="8" id="WDN-yg-vpT"/>
+                                        <constraint firstItem="A8l-1h-kxC" firstAttribute="width" secondItem="iWa-gM-jxS" secondAttribute="height" multiplier="84:30" id="aOq-Ye-Nvm"/>
                                         <constraint firstItem="A8l-1h-kxC" firstAttribute="leading" secondItem="h2p-VW-MJh" secondAttribute="leadingMargin" id="ayW-rF-shc"/>
                                         <constraint firstItem="A8l-1h-kxC" firstAttribute="top" secondItem="h2p-VW-MJh" secondAttribute="topMargin" id="p9s-33-nbV"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="aOq-Ye-Nvm"/>
                                             <exclude reference="ayW-rF-shc"/>
                                             <exclude reference="QIO-HN-QDH"/>
                                         </mask>
@@ -191,8 +196,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="bDh-4G-Wfg" id="Y1P-Cq-wdC">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@JessicaYeh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anF-TJ-KeN">
-                                            <rect key="frame" x="16" y="8" width="84" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@JessicaYeh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anF-TJ-KeN">
+                                            <rect key="frame" x="16" y="8" width="255" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="0Z8-qX-SFf"/>
                                             </constraints>
@@ -232,6 +237,7 @@
                                         <constraint firstItem="Snv-Ww-Yhx" firstAttribute="trailing" secondItem="Y1P-Cq-wdC" secondAttribute="trailingMargin" constant="-8" id="Iko-UM-bb5"/>
                                         <constraint firstItem="anF-TJ-KeN" firstAttribute="leading" secondItem="Y1P-Cq-wdC" secondAttribute="leadingMargin" id="PcJ-VT-IQK"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Snv-Ww-Yhx" secondAttribute="bottom" constant="8" id="V6a-c0-ild"/>
+                                        <constraint firstItem="4RK-E8-0B6" firstAttribute="leading" secondItem="anF-TJ-KeN" secondAttribute="trailing" constant="8" id="XTr-4G-7VP"/>
                                         <constraint firstItem="anF-TJ-KeN" firstAttribute="top" secondItem="Y1P-Cq-wdC" secondAttribute="topMargin" id="iHL-UH-GDo"/>
                                         <constraint firstItem="4RK-E8-0B6" firstAttribute="trailing" secondItem="Y1P-Cq-wdC" secondAttribute="trailingMargin" constant="-8" id="rd5-50-SDw"/>
                                         <constraint firstItem="anF-TJ-KeN" firstAttribute="leading" secondItem="Y1P-Cq-wdC" secondAttribute="leadingMargin" constant="8" id="wWW-qw-2zP"/>
@@ -278,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEG-yg-pLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1237.5" y="447.5"/>
+            <point key="canvasLocation" x="1237.5" y="444.5"/>
         </scene>
         <!--Trends-->
         <scene sceneID="90R-cK-1Ie">
@@ -323,6 +329,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="done" destination="fsP-z1-iiq" id="Ehb-QL-GWr"/>
                         <outlet property="indicator" destination="wbD-S7-ZSZ" id="fEO-qU-R6A"/>
                         <outlet property="picker" destination="y92-zR-Hht" id="vWh-1y-E0x"/>
                     </connections>
@@ -724,7 +731,7 @@
         <image name="tweets_30px" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yz0-Tl-isD"/>
-        <segue reference="IpV-ir-8ve"/>
+        <segue reference="E3I-FZ-gRa"/>
+        <segue reference="RZC-AU-X4e"/>
     </inferredMetricsTieBreakers>
 </document>
