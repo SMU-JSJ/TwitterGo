@@ -93,17 +93,17 @@
 - (void)setTrendName {
     NSString *selectedTrend = [self shortenTrend:self.tweetModel.currentTrend.name];
     
-    // Only reload the trend name and tweets if the user has changed the trend
-    if (![self.currentTrend.title isEqualToString:selectedTrend]) {
+    // Only reload the trend name and tweets if the user has changed the trend,
+    // and if it's not null
+    if (![selectedTrend isEqualToString:@"(null) ▾"] &&
+        ![self.currentTrend.title isEqualToString:selectedTrend]) {
         self.currentTrend.title = selectedTrend;
         // Remove old tweets and show a loading spinner
         [self.tweetModel.tweets removeAllObjects];
         [self.tableView reloadData];
         [self getTwitterJSON];
         [self createTimer];
-    }
-    
-    if([self.currentTrend.title containsString:@"(null)"]) {
+    } else {
         self.currentTrend.title = @"Loading...";
     }
 }

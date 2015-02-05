@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TwitterGo/TweetTableVC.m"
-            timestampString = "444801900.911725"
+            timestampString = "444803430.747771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-setInitialTrend"
             landmarkType = "5">
          </BreakpointContent>
