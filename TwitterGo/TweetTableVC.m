@@ -1,4 +1,4 @@
-//  Jordan Kayse, Jessica Yeh, and Story Zanetti
+//  Team JSJ - Jordan Kayse, Jessica Yeh, and Story Zanetti
 //  TweetTableVC.m
 //  TwitterGo
 //
