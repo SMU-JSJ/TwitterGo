@@ -10,8 +10,8 @@
 
 @interface MixedTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *author;
-@property (weak, nonatomic) IBOutlet UILabel *message;
-@property (weak, nonatomic) IBOutlet UILabel *location;
+@property (weak, nonatomic) IBOutlet UILabel* author;
+@property (weak, nonatomic) IBOutlet UILabel* message;
+@property (weak, nonatomic) IBOutlet UILabel* location;
 
 @end

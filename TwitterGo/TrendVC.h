@@ -13,8 +13,8 @@
 //Creates a protocol for the delegate.
 @protocol TrendVCDelegate <NSObject>
 
-- (void)trendVCDidCancel:(TrendVC *)controller;
-- (void)trendVCDidSave:(TrendVC *)controller;
+- (void) trendVCDidCancel:(TrendVC*) controller;
+- (void) trendVCDidSave:(TrendVC*) controller;
 
 @end
 
@@ -22,7 +22,7 @@
 
 @property (nonatomic, weak) id <TrendVCDelegate> delegate;
 
-- (IBAction)cancel:(id)sender;
-- (IBAction)done:(id)sender;
+- (IBAction) cancel:(id) sender;
+- (IBAction) done:(id) sender;
 
 @end

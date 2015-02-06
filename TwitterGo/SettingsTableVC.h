@@ -13,8 +13,8 @@
 //Creates a protocol for the delegate.
 @protocol SettingsTableVCDelegate <NSObject>
 
-- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller;
-- (void)settingsTableVCDidSave:(SettingsTableVC *)controller;
+- (void) settingsTableVCDidCancel:(SettingsTableVC*) controller;
+- (void) settingsTableVCDidSave:(SettingsTableVC*) controller;
 
 @end
 
@@ -22,7 +22,7 @@
 
 @property (nonatomic, weak) id <SettingsTableVCDelegate> delegate;
 
-- (IBAction)cancel:(id)sender;
-- (IBAction)done:(id)sender;
+- (IBAction) cancel:(id) sender;
+- (IBAction) done:(id) sender;
 
 @end

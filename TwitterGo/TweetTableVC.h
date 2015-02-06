@@ -12,6 +12,6 @@
 
 @interface TweetTableVC : UITableViewController <TrendVCDelegate, SettingsTableVCDelegate>
 
--(void) getTwitterJSON;
+- (void) getTwitterJSON;
 
 @end

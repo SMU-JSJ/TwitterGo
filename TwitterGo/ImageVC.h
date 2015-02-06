@@ -10,6 +10,6 @@
 
 @interface ImageVC : UIViewController
 
-@property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSURL* imageURL;
 
 @end

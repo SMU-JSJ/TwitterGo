@@ -10,6 +10,6 @@
 
 @interface ImageCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSURL* imageURL;
 
 @end

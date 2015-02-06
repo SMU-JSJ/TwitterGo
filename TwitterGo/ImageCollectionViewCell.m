@@ -9,8 +9,9 @@
 #import "ImageCollectionViewCell.h"
 
 @interface ImageCollectionViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+
+@property (weak, nonatomic) IBOutlet UIImageView* imageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView* indicator;
 
 
 @end
@@ -18,13 +19,14 @@
 @implementation ImageCollectionViewCell
 
 //Sets the imageURL and starts getting the UIImage from it.
-- (void)setImageURL:(NSURL*)imageURL {
+- (void) setImageURL:(NSURL*) imageURL {
     _imageURL = imageURL;
     [self startDownloadingImage:_imageURL useThumbnail:YES];
 }
 
 //Sends a request to get the image and sets it.
-- (void)startDownloadingImage:(NSURL*)imageURL useThumbnail:(BOOL)useThumbnail {
+- (void) startDownloadingImage:(NSURL*) imageURL
+                  useThumbnail:(BOOL) useThumbnail {
     self.imageView.image = nil;
     
     if (imageURL) {
@@ -34,12 +36,12 @@
         [self.indicator startAnimating];
         
         //Sends an HTTP request.
-        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
-        completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSURLSessionDownloadTask* task = [session downloadTaskWithRequest:request
+        completionHandler:^(NSURL* location, NSURLResponse* response, NSError* error) {
             if (!error) {
                 //Sets the image view if nothing went wrong.
                 if ([request.URL isEqual:imageURL]) {
-                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.indicator stopAnimating];
                         self.imageView.image = image;
@@ -48,7 +50,7 @@
             } else {
                 //If the thumbnail didn't work try getting the image without it.
                 if (useThumbnail == YES) {
-                    NSURL *url = [NSURL URLWithString:[[[imageURL absoluteString] componentsSeparatedByString:@":thumb"] firstObject]];
+                    NSURL* url = [NSURL URLWithString:[[[imageURL absoluteString] componentsSeparatedByString:@":thumb"] firstObject]];
                     [self startDownloadingImage:url useThumbnail:NO];
                 }
             }
@@ -58,7 +60,6 @@
         //If the URL doesn't exist use default image.
         self.imageView.image = [UIImage imageNamed:@"unavailable_text_100px"];
     }
-
 }
 
 @end

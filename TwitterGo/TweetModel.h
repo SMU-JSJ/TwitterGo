@@ -1,4 +1,4 @@
-//  Story
+//  
 //  TweetModel.h
 //  TwitterGo
 //
@@ -13,12 +13,11 @@
 
 @property (strong, nonatomic) NSMutableArray* tweets;
 @property (strong, nonatomic) NSMutableArray* trends;
+@property (strong, nonatomic) Trend* currentTrend;
 
 + (TweetModel*) sharedInstance;
 
-@property (strong, nonatomic) Trend* currentTrend;
-
-- (void) addAllTweets:(NSDictionary*)json;
-- (void) addAllTrends:(NSDictionary*)json;
+- (void) addAllTweets:(NSDictionary*) json;
+- (void) addAllTrends:(NSDictionary*) json;
 
 @end

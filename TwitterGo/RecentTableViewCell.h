@@ -1,4 +1,4 @@
-//  Story
+//
 //  RecentTableViewCell.h
 //  TwitterGo
 //
@@ -10,8 +10,8 @@
 
 @interface RecentTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *author;
-@property (weak, nonatomic) IBOutlet UILabel *date;
-@property (weak, nonatomic) IBOutlet UILabel *message;
+@property (weak, nonatomic) IBOutlet UILabel* author;
+@property (weak, nonatomic) IBOutlet UILabel* date;
+@property (weak, nonatomic) IBOutlet UILabel* message;
 
 @end

@@ -1,4 +1,4 @@
-//  Story
+//
 //  PopularTableViewCell.h
 //  TwitterGo
 //
@@ -10,9 +10,9 @@
 
 @interface PopularTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *author;
-@property (weak, nonatomic) IBOutlet UILabel *message;
-@property (weak, nonatomic) IBOutlet UILabel *retweets;
-@property (weak, nonatomic) IBOutlet UILabel *favorites;
+@property (weak, nonatomic) IBOutlet UILabel* author;
+@property (weak, nonatomic) IBOutlet UILabel* message;
+@property (weak, nonatomic) IBOutlet UILabel* retweets;
+@property (weak, nonatomic) IBOutlet UILabel* favorites;
 
 @end

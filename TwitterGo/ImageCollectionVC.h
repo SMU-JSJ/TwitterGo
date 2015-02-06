@@ -12,6 +12,6 @@
 
 @interface ImageCollectionVC : UICollectionViewController <TrendVCDelegate, SettingsTableVCDelegate>
 
--(void) getTwitterJSON;
+- (void) getTwitterJSON;
 
 @end

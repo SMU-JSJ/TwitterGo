@@ -20,7 +20,7 @@
 
 @implementation ImageVC
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     [self.scrollView addSubview:self.imageView];
@@ -55,7 +55,7 @@
 }
 
 // Configure scroll view options
-- (void) setScrollView:(UIScrollView *)scrollView {
+- (void) setScrollView:(UIScrollView*) scrollView {
     _scrollView = scrollView;
     _scrollView.minimumZoomScale = 0.2;
     _scrollView.maximumZoomScale = 2.0;
@@ -63,11 +63,11 @@
     _scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
 
--(UIImage *)image {
+- (UIImage*) image {
     return self.imageView.image;
 }
 
-- (void)setImage:(UIImage *)image{
+- (void) setImage:(UIImage*) image {
     self.imageView.image = image;
     
     // Readjust views for the new image
@@ -75,8 +75,8 @@
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
 
--(UIImageView*)imageView {
-    if(!_imageView) {
+- (UIImageView*) imageView {
+    if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
     }
     
@@ -84,7 +84,7 @@
 }
 
 // Allow the image to be zoomed in the scroll view
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+- (UIView*) viewForZoomingInScrollView:(UIScrollView*) scrollView {
     return self.imageView;
 }
 
