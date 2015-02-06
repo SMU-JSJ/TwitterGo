@@ -17,12 +17,14 @@
 
 @implementation ImageCollectionViewCell
 
--(void) setImageURL:(NSURL*) imageURL {
+//Sets the imageURL and starts getting the UIImage from it.
+- (void)setImageURL:(NSURL*)imageURL {
     _imageURL = imageURL;
     [self startDownloadingImage:_imageURL useThumbnail:YES];
 }
 
-- (void) startDownloadingImage:(NSURL*)imageURL useThumbnail:(BOOL)useThumbnail {
+//Sends a request to get the image and sets it.
+- (void)startDownloadingImage:(NSURL*)imageURL useThumbnail:(BOOL)useThumbnail {
     self.imageView.image = nil;
     
     if (imageURL) {
@@ -30,9 +32,12 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
         [self.indicator startAnimating];
+        
+        //Sends an HTTP request.
         NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
         completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
             if (!error) {
+                //Sets the image view if nothing went wrong.
                 if ([request.URL isEqual:imageURL]) {
                     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -41,6 +46,7 @@
                     });
                 }
             } else {
+                //If the thumbnail didn't work try getting the image without it.
                 if (useThumbnail == YES) {
                     NSURL *url = [NSURL URLWithString:[[[imageURL absoluteString] componentsSeparatedByString:@":thumb"] firstObject]];
                     [self startDownloadingImage:url useThumbnail:NO];
@@ -49,25 +55,9 @@
         }];
         [task resume];
     } else {
+        //If the URL doesn't exist use default image.
         self.imageView.image = [UIImage imageNamed:@"unavailable_text_100px"];
     }
-    
-//    if(_imageURL){
-//        self.imageView.image = nil;
-//        
-//        [self.indicator startAnimating];
-//        dispatch_queue_t queue = dispatch_queue_create("image fetcher", NULL);
-//        dispatch_async(queue, ^{
-//            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                self.imageView.image = image;
-//                [self.indicator stopAnimating];
-//            });
-//        });
-//        
-//    } else {
-//        self.imageView.image = [UIImage imageNamed:@"unavailable_text_100px"];
-//    }
 
 }
 

@@ -1,4 +1,4 @@
-//  Jordan
+//
 //  TrendVC.h
 //  TwitterGo
 //
@@ -10,10 +10,11 @@
 
 @class TrendVC;
 
+//Creates a protocol for the delegate.
 @protocol TrendVCDelegate <NSObject>
 
-- (void)trendVCDidCancel:(TrendVC *) controller;
-- (void)trendVCDidSave:(TrendVC *) controller;
+- (void)trendVCDidCancel:(TrendVC *)controller;
+- (void)trendVCDidSave:(TrendVC *)controller;
 
 @end
 

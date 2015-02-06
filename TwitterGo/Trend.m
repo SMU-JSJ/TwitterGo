@@ -10,12 +10,14 @@
 
 @implementation Trend
 
--(id) initTrend:(NSString*) name
-          query:(NSString*) query
+//Constructor
+- (id) initTrend:(NSString*) name
+           query:(NSString*) query
 {
     self = [super init];
     
-    if(self) {
+    //Set member variables
+    if (self) {
         self.name = name;
         self.query = query;
     }

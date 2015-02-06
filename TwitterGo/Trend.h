@@ -1,4 +1,4 @@
-//  Jordan
+//
 //  Trend.h
 //  TwitterGo
 //

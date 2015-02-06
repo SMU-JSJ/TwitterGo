@@ -1,4 +1,4 @@
-//  Jordan
+//  
 //  ImageCollectionViewCell.h
 //  TwitterGo
 //

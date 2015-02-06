@@ -11,7 +11,7 @@
 
 @interface Tweet : NSObject
 
--(id) initTweet:(NSString*) author
+- (id) initTweet:(NSString*) author
         message:(NSString*) message
        retweets:(NSString*) retweets
       favorites:(NSString*) favorites

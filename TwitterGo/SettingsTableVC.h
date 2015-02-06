@@ -10,10 +10,11 @@
 
 @class SettingsTableVC;
 
+//Creates a protocol for the delegate.
 @protocol SettingsTableVCDelegate <NSObject>
 
-- (void)settingsTableVCDidCancel:(SettingsTableVC *) controller;
-- (void)settingsTableVCDidSave:(SettingsTableVC *) controller;
+- (void)settingsTableVCDidCancel:(SettingsTableVC *)controller;
+- (void)settingsTableVCDidSave:(SettingsTableVC *)controller;
 
 @end
 
