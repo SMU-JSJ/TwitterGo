@@ -43,6 +43,7 @@
     
     // Reload tweets if the trend was changed
     [self setTrendName];
+    [self getTwitterJSON];
     [self createTimer];
 }
 
@@ -61,8 +62,6 @@
         [self.tweetModel.tweets removeAllObjects];
         [self.collectionView reloadData];
         [self.indicator startAnimating];
-        [self getTwitterJSON];
-        [self createTimer];
     }
 }
 
@@ -173,10 +172,6 @@
 
 - (void)settingsTableVCDidSave:(SettingsTableVC *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    // Reload tweets and reset timer
-    [self getTwitterJSON];
-    [self createTimer];
 }
 
 #pragma mark <UICollectionViewDataSource>

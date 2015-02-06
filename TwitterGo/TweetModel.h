@@ -12,11 +12,13 @@
 @interface TweetModel : NSObject
 
 @property (strong, nonatomic) NSMutableArray* tweets;
+@property (strong, nonatomic) NSMutableArray* trends;
 
-+(TweetModel*) sharedInstance;
++ (TweetModel*) sharedInstance;
 
 @property (strong, nonatomic) Trend* currentTrend;
 
--(void) addAllTweets:(NSDictionary*)json;
+- (void) addAllTweets:(NSDictionary*)json;
+- (void) addAllTrends:(NSDictionary*)json;
 
 @end

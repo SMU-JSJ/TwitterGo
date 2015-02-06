@@ -36,6 +36,14 @@
     return _tweets;
 }
 
+//Gets the array of trends or creates an empty array.
+- (NSMutableArray*)trends {
+    if (!_trends) {
+        _trends = [[NSMutableArray alloc] init];
+    }
+    return _trends;
+}
+
 - (NSString*) convertNumber:(NSNumber*)count {
     if ([count intValue] >= 1000000) {
         return [NSString stringWithFormat:@"%.1fM", [count floatValue]/1000000];
@@ -79,6 +87,22 @@
                                        imageURL:imageURL];
         
         [self.tweets addObject:tweet];
+    }
+}
+
+//Loops through the json and adds the trends to the array.
+- (void) addAllTrends:(NSDictionary*)json {
+    [self.trends removeAllObjects];
+    NSArray* trends = [json objectForKey:@"trends"];
+    
+    for (NSDictionary* trend in trends) {
+        NSString* name = [trend objectForKey:@"name"];
+        NSString* query = [trend objectForKey:@"query"];
+        
+        Trend* newTrend = [[Trend alloc] initTrend:name
+                                             query:query];
+        
+        [self.trends addObject:newTrend];
     }
 }
 

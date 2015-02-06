@@ -14,7 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
-@property (strong, nonatomic) NSMutableArray* trends;
 @property (strong, nonatomic) Trend* temporaryTrend;
 @property (strong, nonatomic) TweetModel* tweetModel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *done;
@@ -52,13 +51,6 @@
     [self.delegate trendVCDidSave:self];
 }
 
-//Gets the array of trends or creates an empty array.
-- (NSMutableArray*)trends {
-    if (!_trends) {
-        _trends = [[NSMutableArray alloc] init];
-    }
-    return _trends;
-}
 
 //When the view has loaded it sets up the delegate.
 - (void)viewDidLoad {
@@ -67,8 +59,18 @@
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
-    // Gets the current list of trends.
-    [self getTwitterJSON];
+    // Gets the current list of trends and prevent trends from reloading
+    // more than 15 times in 15 minutes (rate limit)
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDate *trendTimer = [defaults objectForKey:@"trendTimer"];
+    NSDate *currentDate = [NSDate date];
+    double interval = [currentDate timeIntervalSinceDate:trendTimer];
+    if (interval > 300 || !trendTimer || ![self.tweetModel.trends firstObject]) {
+        [defaults setObject:currentDate forKey:@"trendTimer"];
+        [self getTwitterJSON];
+    } else {
+        [self selectTrendInPicker];
+    }
 }
 
 // The number of columns of data
@@ -78,12 +80,12 @@
 
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.trends count];
+    return [self.tweetModel.trends count];
 }
 
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    Trend* trend = self.trends[row];
+    Trend* trend = self.tweetModel.trends[row];
     return trend.name;
 }
 
@@ -91,7 +93,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // This method is triggered whenever the user makes a change to the picker selection.
     // Sets the temporaryTrend equal to the selected trend.
-    self.temporaryTrend = self.trends[row];
+    self.temporaryTrend = self.tweetModel.trends[row];
 }
 
 //Gets the current trends from Twitter API.
@@ -124,21 +126,11 @@
                 }
                 
                 //Removes all the old trends and adds the new ones.
-                [self.trends removeAllObjects];
-                [self addAllTrends:jsonDict];
+                [self.tweetModel addAllTrends:jsonDict];
                 
                 //Reloads the picker
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.picker reloadAllComponents];
-                    
-                    for (int i = 0; i < [self.trends count]; i++) {
-                        Trend* trend = self.trends[i];
-                        
-                        //Sets the picker to the trend that was previously chosen if it exists.
-                        if ([trend.name isEqualToString:self.tweetModel.currentTrend.name]) {
-                            [self.picker selectRow:i inComponent:0 animated:NO];
-                        }
-                    }
+                    [self selectTrendInPicker];
                     
                     [self.indicator stopAnimating];
                     self.done.enabled = YES;
@@ -148,18 +140,17 @@
             }] resume];
 }
 
-//Loops through the json and adds the trends to the array.
-- (void) addAllTrends:(NSDictionary*)json {
-    NSArray* trends = [json objectForKey:@"trends"];
+- (void) selectTrendInPicker {
+    [self.picker reloadAllComponents];
+    self.temporaryTrend = self.tweetModel.trends[0];
     
-    for (NSDictionary* trend in trends) {
-        NSString* name = [trend objectForKey:@"name"];
-        NSString* query = [trend objectForKey:@"query"];
+    for (int i = 0; i < [self.tweetModel.trends count]; i++) {
+        Trend* trend = self.tweetModel.trends[i];
         
-        Trend* newTrend = [[Trend alloc] initTrend:name
-                                             query:query];
-        
-        [self.trends addObject:newTrend];
+        //Sets the picker to the trend that was previously chosen if it exists.
+        if ([trend.name isEqualToString:self.tweetModel.currentTrend.name]) {
+            [self.picker selectRow:i inComponent:0 animated:NO];
+        }
     }
 }
 
