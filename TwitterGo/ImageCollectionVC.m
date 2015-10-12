@@ -15,7 +15,6 @@
 @interface ImageCollectionVC ()
 
 @property (strong, nonatomic) TweetModel* tweetModel;
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentTrend;
 @property (strong, nonatomic) NSTimer* timer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;

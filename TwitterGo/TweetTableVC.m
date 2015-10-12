@@ -18,7 +18,6 @@
 @property (strong, nonatomic) TweetModel* tweetModel;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* currentTrend;
-@property (strong, nonatomic) IBOutlet UITableView* tableView;
 
 @property (strong, nonatomic) NSString* type;
 @property (strong, nonatomic) NSTimer* timer;
